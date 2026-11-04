@@ -302,6 +302,8 @@ export const CATALOG = [
   machine('adductor_abductor', 'Adductors / abductors', { maxKg: 100 }),
   machine('calf_machine', 'Bessons (de peu / assegut)', { maxKg: 150 }),
   machine('lever_machines', 'Màquines de palanca (discs)', { maxKg: 200 }),
+  machine('arm_machines', 'Màquines de braços (curl / tríceps)', { maxKg: 80 }),
+  machine('ab_machine', 'Màquina d\'abdominals', { maxKg: 80 }),
   machine('belt_squat', 'Belt squat', { pro: true, maxKg: 200 }),
   machine('pendulum_squat', 'Pendulum squat', { pro: true, maxKg: 200 }),
   machine('reverse_hyper', 'Reverse hyper', { pro: true, maxKg: 100 }),
