@@ -24,3 +24,4 @@ Format: `AAAA-MM-DD · decisió · motiu`
 - 2026-11-04 · "Començar" porta a una pantalla "Properament" (mode en directe = Fase 2). "Pla setmanal" i "Construir manualment" surten com a "Properament" a Crear. · Abast de la Fase 1.
 - 2026-11-04 · Les molèsties es pregunten al pas 5 i es desen al perfil (persisteixen entre sessions). · Són una dada estable de l'usuari.
 - 2026-11-04 · Al mòbil el botó del resultat diu només "Desar" (a partir de 640 px, "Desar entrenament"). · Cabia en dues línies a 390 px.
+- 2026-11-04 · El repo de GitHub tenia un commit inicial amb un README d'una línia: s'ha integrat amb un merge (sense force-push). · No sobreescriure res del remot.

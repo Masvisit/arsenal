@@ -56,7 +56,7 @@ export default function Profile() {
                   <span className="w-32 text-sm">{label}</span>
                   <input aria-label={`${label}: kg`} type="number" inputMode="decimal" className="input h-10 min-h-0 w-20" placeholder="kg" value={r.kg ?? ''} onChange={(e) => setRef(key, { kg: n(e.target.value) })} />
                   <span className="text-ink-soft">×</span>
-                  <input aria-label={`${label}: reps`} type="number" inputMode="numeric" className="input h-10 min-h-0 w-16" placeholder="reps" value={r.reps ?? ''} onChange={(e) => setRef(key, { reps: n(e.target.value) })} />
+                  <input aria-label={`${label}: reps`} type="number" inputMode="numeric" className="input h-10 min-h-0 w-20" placeholder="reps" value={r.reps ?? ''} onChange={(e) => setRef(key, { reps: n(e.target.value) })} />
                   <span className="text-xs text-accent-soft">{rm ? `1RM ≈ ${formatKg(Math.round(rm * 2) / 2)} kg` : r.reps > 10 ? 'Massa reps per estimar' : ''}</span>
                 </li>
               );
