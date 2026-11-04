@@ -9,7 +9,7 @@
     "preview": "vite preview --port 4173 --strictPort",
     "test": "vitest run",
     "test:watch": "vitest",
-    "data": "node scripts/fetch-exercises.mjs",
+    "data": "node scripts/fetch-exercises.mjs && node scripts/build-names.mjs",
     "audit": "node scripts/audit-requirements.mjs",
     "shots": "node scripts/screenshots.mjs"
   },

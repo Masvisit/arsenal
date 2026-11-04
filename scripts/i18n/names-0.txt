@@ -1,0 +1,300 @@
+0|Abdominal de 3/4
+1|Estirament d'isquiotibials 90/90
+2|Abdominals a la màquina
+3|Roda abdominal
+4|Adductors (autoalliberament)
+5|Estirament d'adductors i engonal
+6|Molí avançat amb kettlebell
+7|Bicicleta a l'aire
+8|Estirament de quàdriceps a quatre grapes
+9|Curl martell alternat
+10|Tocs de taló alternats
+11|Curl alternat amb mancuernes en banc inclinat
+12|Salts diagonals alternats
+13|Press d'espatlles alternat a la politja
+14|Elevació alternada de deltoides
+15|Press a terra alternat amb kettlebell
+16|Cargolada penjada alternada amb kettlebell
+17|Press alternat amb kettlebell
+18|Rem alternat amb kettlebell
+19|Rem renegat alternat
+20|Cercles de turmell
+21|Estirament amb el turmell sobre el genoll
+22|Tibial anterior (autoalliberament)
+23|Press antigravetat
+24|Cercles de braços
+25|Press Arnold amb mancuernes
+26|Voltes al món amb mancuernes
+27|Entrenador de pedra atlas
+28|Pedres atlas
+29|Pes mort amb eix gruixut
+30|Obertures posteriors amb goma
+31|Arrossegament enrere
+32|Llançament enrere de pilota medicinal
+33|Plataforma d'equilibri
+34|Curl femoral amb fitball
+35|Dominades assistides amb goma
+36|Bon dia amb goma
+37|Bon dia amb goma (pull through)
+38|Adducció de maluc amb goma
+39|Obertura de goma (pull apart)
+40|Extensió de tríceps estirat amb goma
+41|Roda abdominal amb barra
+42|Roda abdominal amb barra de genolls
+43|Press de banca amb barra (agafada mitjana)
+44|Curl amb barra
+45|Curl amb barra estirat en banc inclinat
+46|Pes mort amb barra
+47|Esquat complet amb barra
+48|Pont de glutis amb barra
+49|Press de banca guillotina amb barra
+50|Esquat hack amb barra
+51|Hip thrust amb barra
+52|Press de banca inclinat amb barra (agafada mitjana)
+53|Elevació d'espatlles amb barra en banc inclinat
+54|Gambada amb barra
+55|Rem de deltoide posterior amb barra
+56|Roda abdominal amb barra des del banc
+57|Elevació de bessons asseguda amb barra
+58|Press d'espatlles amb barra
+59|Encongiment amb barra
+60|Encongiment amb barra per darrere
+61|Inclinació lateral amb barra
+62|Esquat lateral amb barra
+63|Esquat amb barra
+64|Esquat amb barra fins al banc
+65|Step-up amb barra
+66|Gambada caminant amb barra
+67|Cordes d'ones (battle ropes)
+68|Gateig d'ós arrossegant el trineu
+69|Estirament de pit amb mans darrere el cap
+70|Fons a banc
+71|Salt al banc
+72|Press de banca (powerlifting)
+73|Press de banca amb gomes
+74|Press de banca amb cadenes
+75|Sprint al banc
+76|Rem inclinat amb barra
+77|Elevació posterior amb mancuerna i cap al banc
+78|Elevació lateral inclinat a la politja baixa
+79|Rem a una mà amb barra a l'extrem
+80|Rem a dues mans amb barra a l'extrem
+81|Rem inclinat amb dues mancuernes
+82|Rem inclinat amb dues mancuernes (palmells endins)
+83|Press inclinat amb kettlebell (bent press)
+84|Pullover amb barra i braços flexionats
+85|Pullover amb mancuerna i braços flexionats
+86|Elevació de maluc amb genolls flexionats
+87|Bicicleta
+88|Bicicleta estàtica
+89|Press de banca amb tauló
+90|Press de tríceps amb pes corporal
+91|Body-up
+92|Obertures amb pes corporal
+93|Rem mitjà amb pes corporal
+94|Esquat amb pes corporal
+95|Gambada caminant amb pes corporal
+96|Abdominal a la politja sobre bosu amb inclinació lateral
+97|Elevació de maluc estirat (bottoms up)
+98|Cargolada invertida penjada amb kettlebell
+99|Salts a la caixa (repetits)
+100|Saltirons a la caixa
+101|Esquat a la caixa
+102|Esquat a la caixa amb gomes
+103|Esquat a la caixa amb cadenes
+104|Braquial (autoalliberament)
+105|Press Bradford (Rocky)
+106|Pont de glutis
+107|Elevacions de maluc en planxa (butt-ups)
+108|Contractor (pec deck)
+109|Press de pit a la politja
+110|Encreuament de politges
+111|Abdominal de genolls a la politja
+112|Pes mort a la politja
+113|Curl martell a la politja amb corda
+114|Adducció de maluc a la politja
+115|Extensió de tríceps a la politja en banc inclinat
+116|Extensió de tríceps inclinat a la politja
+117|Rotació interna a la politja
+118|Creu de ferro a la politja
+119|Gir de judo a la politja
+120|Extensió de tríceps estirat a la politja
+121|Extensió de tríceps a una mà a la politja
+122|Curl Scott a la politja
+123|Obertura posterior a la politja
+124|Abdominal invers a la politja
+125|Extensió de tríceps per sobre del cap amb corda
+126|Rem de deltoide posterior amb corda
+127|Gir rus a la politja
+128|Abdominal assegut a la politja
+129|Elevació lateral asseguda a la politja
+130|Press d'espatlles a la politja
+131|Encongiment a la politja
+132|Curl de canell a la politja
+133|Elevació de bessons a la màquina
+134|Elevació de bessons a la premsa de cames
+135|Elevació de bessons sobre una mancuerna
+136|Elevació de bessons amb goma
+137|Estirament de bessons amb colzes a la paret
+138|Estirament de bessons amb mans a la paret
+139|Encongiment a la màquina de bessons
+140|Bessons (autoalliberament)
+141|Pes mort de cotxe
+142|Volant amb disc
+143|Pas creuat ràpid (carioca)
+144|Estirament del gat
+145|Recepció i llançament per sobre del cap
+146|Extensió amb nansa de cadena
+147|Press amb cadenes
+148|Estirament de cama estirada a la cadira
+149|Estirament lumbar a la cadira
+150|Esquat a la cadira
+151|Estirament de tren superior a la cadira
+152|Estirament de pit i espatlla davantera
+153|Empenta de pit des de tres suports
+154|Empenta de pit (repetida)
+155|Empenta de pit (única)
+156|Empenta de pit amb sortida corrent
+157|Estirament de pit sobre fitball
+158|Postura del nen
+159|Estirament barbeta al pit
+160|Dominades supines
+161|Campana de circ
+162|Cargolada
+163|Cargolada i envestida
+164|Cargolada i press
+165|Pes mort de cargolada
+166|Cargolada des de blocs
+167|Tirada de cargolada
+168|Encongiment de cargolada
+169|Flexions en rellotge
+170|Press de banca amb barra (agafada tancada)
+171|Press amb mancuernes (agafada tancada)
+172|Curl amb barra EZ (agafada tancada)
+173|Curl amb barra EZ i goma (agafada tancada)
+174|Press amb barra EZ (agafada tancada)
+175|Jaló al pit (agafada tancada)
+176|Flexions tancades sobre una mancuerna
+177|Curl amb barra de peu (agafada tancada)
+178|Capolls (abdominal)
+179|Roda de Conan
+180|Curl de concentració
+181|Curl martell creuat
+182|Encreuament amb gomes
+183|Abdominal creuat
+184|Gambada enrere creuada
+185|Crucifix
+186|Abdominal amb mans per sobre del cap
+187|Abdominal amb cames sobre fitball
+188|Abdominals
+189|Press cubà
+190|Estirament de la ballarina
+191|Insecte mort (dead bug)
+192|Pes mort amb gomes
+193|Pes mort amb cadenes
+194|Press de banca declinat amb barra
+195|Press tancat declinat a extensió de tríceps
+196|Abdominal declinat
+197|Press de banca declinat amb mancuernes
+198|Obertures declinades amb mancuernes
+199|Extensió de tríceps declinada amb mancuernes
+200|Extensió de tríceps declinada amb barra EZ
+201|Abdominal oblic declinat
+202|Flexions declinades
+203|Abdominal invers declinat
+204|Press declinat a la Smith
+205|Pes mort amb dèficit
+206|Salt en profunditat amb impuls
+207|Màquina de fons
+208|Fons (versió pit)
+209|Fons (versió tríceps)
+210|Elevació de bessons tipus ase
+211|Cargolada penjada alternada amb dues kettlebells
+212|Envestida amb dues kettlebells
+213|Push press amb dues kettlebells
+214|Arrencada amb dues kettlebells
+215|Molí amb dues kettlebells
+216|Talons al cul
+217|Equilibri cap avall sobre fitball
+218|Curl arrossegat (drag curl)
+219|Flexions amb caiguda
+220|Curl de bíceps alternat amb mancuernes
+221|Press de banca amb mancuernes
+222|Press de banca amb mancuernes (agafada neutra)
+223|Curl de bíceps amb mancuernes
+224|Cargolada amb mancuernes
+225|Press a terra amb mancuernes
+226|Obertures amb mancuernes
+227|Rem amb mancuernes en banc inclinat
+228|Elevació d'espatlles amb mancuernes en banc inclinat
+229|Gambades amb mancuernes
+230|Elevació posterior a una mà estirat amb mancuerna
+231|Pronació estirat amb mancuerna
+232|Elevació posterior estirat amb mancuernes
+233|Supinació estirat amb mancuerna
+234|Press d'espatlles a una mà amb mancuerna
+235|Extensió de tríceps a una mà amb mancuerna
+236|Rem vertical a una mà amb mancuerna
+237|Curl inclinat de bocaterrosa amb mancuernes
+238|Elevació amb mancuernes
+239|Gambada enrere amb mancuernes
+240|Elevació en escàpula (scaption) amb mancuernes
+241|Salt a la caixa assegut amb mancuernes
+242|Elevació de bessons asseguda a una cama amb mancuerna
+243|Press d'espatlles amb mancuernes
+244|Encongiment amb mancuernes
+245|Inclinació lateral amb mancuerna
+246|Esquat amb mancuernes
+247|Esquat amb mancuernes fins al banc
+248|Step-up amb mancuernes
+249|Extensió de tríceps amb mancuernes (agafada en pronació)
+250|Estirament dinàmic d'esquena
+251|Estirament dinàmic de pit
+252|Cercles de colzes
+253|Colze al genoll
+254|Colzes enrere
+255|Gambada enrere elevada
+256|Rem a la politja elevat
+257|El·líptica
+258|Abdominal sobre fitball
+259|Recollida de genolls amb fitball
+260|Press a terra a una mà amb kettlebell (recorregut ampliat)
+261|Rotació externa
+262|Rotació externa amb goma
+263|Rotació externa a la politja
+264|Curl amb barra EZ
+265|Extensió de tríceps estirat amb barra EZ
+266|Face pull
+267|Passeig del granger (farmer's walk)
+268|Skipping ràpid
+269|Curl de dits
+270|Obertures a la politja en banc pla
+271|Recollida de cames en banc pla
+272|Elevació de cames estirat en banc pla
+273|Curl inclinat de flexors amb mancuernes
+274|Elevació glutis-isquios a terra
+275|Press a terra
+276|Press a terra amb cadenes
+277|Batecs de cames
+278|Peu (autoalliberament)
+279|Arrossegament endavant amb press
+280|Esquat Frankenstein
+281|Esquat amb salt lliure
+282|Salts de granota
+283|Abdominals de granota
+284|Esquat frontal amb barra
+285|Esquat frontal amb barra fins al banc
+286|Salt frontal a la caixa
+287|Elevació frontal a la politja
+288|Salts de con (o de tanca)
+289|Elevació frontal amb mancuerna
+290|Elevació frontal en banc inclinat amb mancuernes
+291|Elevacions de cama frontals
+292|Elevació frontal amb disc
+293|Elevació frontal i pullover
+294|Esquat frontal (agafada de cargolada)
+295|Esquat frontal amb dues kettlebells
+296|Elevació frontal amb dues mancuernes
+297|Jaló al pit (recorregut complet)
+298|Dominades d'estèrnum Gironda
+299|Elevació glutis-isquios (GHR)

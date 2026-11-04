@@ -1,0 +1,105 @@
+{
+  "datasetMuscles": {
+    "chest": "Pit",
+    "shoulders": "Deltoides",
+    "biceps": "Bíceps",
+    "triceps": "Tríceps",
+    "forearms": "Avantbraços",
+    "abdominals": "Abdominals",
+    "lats": "Dorsals",
+    "middle back": "Esquena mitja (romboides)",
+    "traps": "Trapezi",
+    "lower back": "Lumbars",
+    "glutes": "Glutis",
+    "quadriceps": "Quàdriceps",
+    "hamstrings": "Isquiotibials",
+    "calves": "Bessons",
+    "adductors": "Adductors",
+    "abductors": "Abductors",
+    "neck": "Coll"
+  },
+  "targets": {
+    "chest": "Pit",
+    "front-delts": "Deltoide anterior",
+    "side-delts": "Deltoide lateral",
+    "rear-delts": "Deltoide posterior",
+    "biceps": "Bíceps",
+    "triceps": "Tríceps",
+    "forearms": "Avantbraços",
+    "abs": "Abdominals",
+    "obliques": "Oblics",
+    "lats": "Dorsals",
+    "middle-back": "Esquena mitja",
+    "traps": "Trapezi",
+    "lower-back": "Lumbars",
+    "glutes": "Glutis",
+    "quads": "Quàdriceps",
+    "hamstrings": "Isquiotibials",
+    "calves": "Bessons",
+    "adductors": "Adductors",
+    "abductors": "Abductors",
+    "neck": "Coll"
+  },
+  "equipment": {
+    "barbell": "Barra",
+    "dumbbell": "Mancuernes",
+    "kettlebells": "Kettlebells",
+    "cable": "Politja",
+    "machine": "Màquina",
+    "body only": "Pes corporal",
+    "bands": "Gomes",
+    "medicine ball": "Pilota medicinal",
+    "exercise ball": "Fitball",
+    "foam roll": "Foam roller",
+    "e-z curl bar": "Barra EZ",
+    "other": "Altres",
+    "null": "Sense material"
+  },
+  "categories": {
+    "strength": "Força",
+    "stretching": "Estiraments",
+    "plyometrics": "Pliometria",
+    "strongman": "Strongman",
+    "powerlifting": "Powerlifting",
+    "cardio": "Cardio",
+    "olympic weightlifting": "Halterofília"
+  },
+  "datasetLevels": {
+    "beginner": "Principiant",
+    "intermediate": "Intermedi",
+    "expert": "Expert"
+  },
+  "levels": {
+    "novice": "Novell",
+    "beginner": "Principiant",
+    "intermediate": "Intermedi",
+    "advanced": "Avançat"
+  },
+  "goals": {
+    "muscle": "Guanyar múscul",
+    "strength": "Guanyar força",
+    "fatloss": "Perdre greix",
+    "endurance": "Resistència muscular",
+    "power": "Potència i explosivitat",
+    "agentRural": "Proves Agent Rural"
+  },
+  "sex": {
+    "male": "Home",
+    "female": "Dona"
+  },
+  "limitations": {
+    "shoulder": "Espatlla",
+    "elbow": "Colze",
+    "wrist": "Canell",
+    "lowerBack": "Lumbar",
+    "knee": "Genoll",
+    "ankle": "Turmell"
+  },
+  "locationKinds": {
+    "gym": "Gimnàs",
+    "home": "Casa",
+    "garden": "Jardí",
+    "park": "Parc",
+    "outdoor": "Exterior"
+  }
+}

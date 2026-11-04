@@ -1,0 +1,276 @@
+600|Passeig amb carro (rickshaw)
+601|Pes mort amb carro (rickshaw)
+602|Fons a les anelles
+603|Salt coet
+604|Elevació de bessons de peu amb balanceig
+605|Dominades i jalons Rocky
+606|Pes mort romanès
+607|Pes mort romanès amb dèficit
+608|Pujada de corda
+609|Abdominal amb corda
+610|Saltar a corda
+611|Jaló amb braços estirats amb corda
+612|Estirament d'espatlla volta al món
+613|Remadora
+614|Estirament del corredor
+615|Córrer a la cinta
+616|Gir rus
+617|Càrrega de sac (sandbag)
+618|Dominada escapular
+619|Tisores de cames
+620|Salt de tisora
+621|Curl femoral assegut amb goma
+622|Press militar assegut amb barra
+623|Gir assegut amb barra
+624|Extensió de tríceps a una mà assegut i inclinat
+625|Elevació posterior assegut i inclinat
+626|Extensió de tríceps a dues mans assegut i inclinat
+627|Bíceps assegut (estirament)
+628|Rem assegut a la politja
+629|Press d'espatlles assegut a la politja
+630|Elevació de bessons asseguda
+631|Estirament de bessons assegut
+632|Curl de concentració tancat assegut amb barra
+633|Curl assegut amb mancuernes
+634|Curl de bíceps intern assegut amb mancuernes
+635|Curl de canell en pronació assegut amb mancuernes
+636|Curl de canell en supinació assegut amb mancuernes
+637|Press assegut amb mancuernes
+638|Recollida de cames asseguda en banc pla
+639|Estirament d'isquios assegut a terra
+640|Deltoide anterior assegut (estirament)
+641|Glutis assegut (estirament)
+642|Bon dia assegut
+643|Isquiotibials assegut (estirament)
+644|Estirament d'isquios i bessons assegut
+645|Resistència de coll asseguda amb arnès
+646|Curl femoral assegut
+647|Recollida de cames asseguda
+648|Rem a una mà assegut a la politja
+649|Curl de canell en pronació a una mà assegut
+650|Curl de canell en supinació a una mà assegut
+651|Estirament per sobre del cap assegut
+652|Curl de canell en supinació assegut amb barra
+653|Curl de canell en pronació assegut amb barra
+654|Elevació lateral asseguda
+655|Press de tríceps assegut
+656|Curl de canell en supinació assegut a la politja baixa
+657|Press balancí (press lateral alternat)
+658|Rem escopeta (shotgun row)
+659|Cercles d'espatlles
+660|Press d'espatlles amb gomes
+661|Elevació d'espatlles
+662|Estirament d'espatlla
+663|Planxa lateral
+664|Salt lateral i sprint
+665|Navalla lateral
+666|Elevació lateral
+667|Elevació lateral a elevació frontal
+668|Elevacions laterals de cama
+669|Estirament d'engonal de costat
+670|Estirament lateral de coll
+671|Salt de longitud lateral
+672|Desplaçament lateral a la caixa
+673|Dominades de costat a costat
+674|Tirada lateral de canell (estirament)
+675|Estirament de costat a terra
+676|Elevació amb una sola mancuerna
+677|Talons al cul a una cama
+678|Pont de glutis a una cama
+679|Impuls a una cama
+680|Encreuament a una mà a la politja
+681|Jammer lineal a una mà
+682|Flexions a una mà
+683|Sprint amb un con
+684|Esquat a una cama a la caixa alta
+685|Progressió de salts a una cama
+686|Salt lateral a una cama
+687|Extensió de quàdriceps a una cama
+688|Salt de gambada a una cama
+689|Esquats asseguts
+690|Abdominal complet (sit-up)
+691|Patinatge
+692|Arrossegar trineu amb arnès
+693|Caminar enrere amb trineu per sobre del cap
+694|Extensió de tríceps per sobre del cap amb trineu
+695|Empènyer el trineu
+696|Obertura inversa amb trineu
+697|Rem amb trineu
+698|Cops de mall
+699|Elevació d'espatlles inclinat a la Smith
+700|Encongiment per darrere a la Smith
+701|Press de banca a la Smith
+702|Rem inclinat a la Smith
+703|Elevació de bessons a la Smith
+704|Press de banca tancat a la Smith
+705|Press declinat a la Smith
+706|Cargolada de potència penjada a la Smith
+707|Elevació de maluc a la Smith
+708|Press de banca inclinat a la Smith
+709|Premsa de cames a la Smith
+710|Rem vertical a una mà a la Smith
+711|Press d'espatlles a la Smith
+712|Esquat pistol a la Smith
+713|Elevació de tibials a la Smith
+714|Esquat a la Smith
+715|Pes mort de cames rígides a la Smith
+716|Rem vertical a la Smith
+717|Esquat dividit a una cama a la Smith
+718|Arrencada
+719|Equilibri d'arrencada
+720|Pes mort d'arrencada
+721|Arrencada des de blocs
+722|Tirada d'arrencada
+723|Encongiment d'arrencada
+724|Tríceps per sobre del cap amb goma (velocitat)
+725|Esquat a la caixa (velocitat)
+726|Esquats de velocitat
+727|Llançador d'encanteris
+728|Gateig d'aranya
+729|Curl aranya
+730|Estirament de columna
+731|Cargolada en tisora
+732|Envestida en tisora
+733|Salt en tisora
+734|Arrencada en tisora
+735|Esquat dividit amb mancuernes
+736|Esquats dividits
+737|Envestida en esquat
+738|Esquat amb gomes
+739|Esquat amb cadenes
+740|Esquat amb desplaçament de discs
+741|Esquats amb gomes
+742|Escaladora (Stairmaster)
+743|Press alternat de peu amb mancuernes
+744|Elevació de bessons de peu amb barra
+745|Press darrere el clatell de peu amb barra
+746|Extensió de tríceps a una mà de peu i inclinat
+747|Extensió de tríceps a dues mans de peu i inclinat
+748|Curl de bíceps de peu a la politja
+749|Estirament de bíceps de peu
+750|Press Bradford de peu
+751|Press de pit de peu a la politja
+752|Elevació diagonal de peu a la politja
+753|Llenyataire de peu a la politja (woodchop)
+754|Elevacions de bessons de peu
+755|Curl de concentració de peu
+756|Elevació de bessons de peu amb mancuernes
+757|Press de peu amb mancuernes
+758|Curl invers de peu amb mancuernes
+759|Elevació frontal per sobre del cap amb mancuerna i braç estirat
+760|Extensió de tríceps de peu amb mancuerna
+761|Rem vertical de peu amb mancuernes
+762|Estirament de quàdriceps elevat de peu
+763|Elevació frontal per sobre del cap amb barra
+764|Estirament de bessons (gastrocnemi) de peu
+765|Estirament d'isquios i bessons de peu
+766|Cercles de maluc de peu
+767|Flexors de maluc de peu (estirament)
+768|Curl de bíceps intern de peu
+769|Estirament lateral de peu
+770|Curl femoral de peu
+771|Salt de longitud a peus junts
+772|Elevació de deltoides de peu a la politja baixa
+773|Extensió de tríceps a una mà de peu a la politja baixa
+774|Press militar de peu
+775|Pinça de disc olímpic de peu
+776|Curl a una mà de peu a la politja
+777|Curl a una mà de peu sobre banc inclinat
+778|Extensió de tríceps a una mà de peu amb mancuerna
+779|Extensió de tríceps per sobre del cap amb barra
+780|Press a una mà de peu amb mancuerna (palmell endins)
+781|Press de peu amb mancuernes (palmells endins)
+782|Curl de canell per darrere amb barra
+783|Basculació pèlvica de peu
+784|Abdominal de peu amb corda
+785|Estirament de soli i Aquil·les de peu
+786|Tocar-se els peus de peu
+787|Extensió de tríceps de peu amb tovallola
+788|Llançament per sobre del cap a dues mans de peu
+789|Salt d'estrella
+790|Escala mecànica (step mill)
+791|Step-up amb elevació de genoll
+792|Bon dia amb barra i cames rígides
+793|Pes mort de cames rígides amb barra
+794|Pes mort de cames rígides amb mancuernes
+795|Buit abdominal (vacuum)
+796|Rem mitjà en banc amb barra recta
+797|Elevacions rectes en banc inclinat
+798|Pullover amb mancuerna i braços estirats
+799|Jaló amb braços estirats
+800|Salt de gambada creuat
+801|Pes mort sumo
+802|Pes mort sumo amb gomes
+803|Pes mort sumo amb cadenes
+804|Superman
+805|Llançament de pit estirat
+806|Llançament per sobre del cap a una mà estirat
+807|Llançament per sobre del cap a dues mans estirat
+808|Caiguda en suspensió (fallout)
+809|Flexions en suspensió
+810|Abdominal invers en suspensió
+811|Rem en suspensió
+812|Esquat dividit en suspensió
+813|Press Svend
+814|Rem en T amb nansa
+815|Press Tate
+816|Obertura de cames (estirament)
+817|Abductors a la màquina
+818|Adductors a la màquina
+819|Bolcar pneumàtic
+820|Tocs de turmell (abdominal)
+821|Rotació de tronc
+822|Córrer o caminar per muntanya
+823|Pes mort amb barra hexagonal
+824|Patada de tríceps amb mancuerna
+825|Estirament lateral de tríceps
+826|Extensió de tríceps per sobre del cap amb corda
+827|Extensió de tríceps a la politja
+828|Extensió de tríceps a la politja amb corda
+829|Extensió de tríceps a la politja amb barra en V
+830|Estirament de tríceps
+831|Abdominal recollit
+832|Curl Scott a dues mans amb mancuernes
+833|Cargolada a dues mans amb kettlebell
+834|Envestida a dues mans amb kettlebell
+835|Press militar a dues mans amb kettlebell
+836|Rem a dues mans amb kettlebell
+837|Jaló a la politja amb agafada supina
+838|Estirament d'esquena alta
+839|Estirament d'esquena alta agafant la cama
+840|Rem vertical amb barra
+841|Rem vertical a la politja
+842|Rem vertical amb gomes
+843|Estirament cap amunt
+844|Jaló amb barra en V
+845|Dominades amb barra en V
+846|Swing vertical
+847|Caminar a la cinta
+848|Hiperextensió amb fitball i pes
+849|Inclinació lateral amb fitball i pes
+850|Fons a banc amb llast
+851|Abdominals amb llast
+852|Esquat amb salt i llast
+853|Dominades amb llast
+854|Esquat sissy amb llast
+855|Abdominals amb gomes
+856|Esquat amb llast
+857|Esquat amb barra i peus oberts
+858|Pes mort de cames rígides amb peus oberts
+859|Press de banca amb barra (agafada oberta)
+860|Press de banca declinat amb barra (agafada oberta)
+861|Pullover declinat amb barra (agafada oberta)
+862|Jaló al pit (agafada oberta)
+863|Jaló darrere el clatell (agafada oberta)
+864|Dominades darrere el clatell (agafada oberta)
+865|Curl de peu amb barra (agafada oberta)
+866|Sprints de vent (wind sprints)
+867|Molins
+868|L'estirament més bo del món
+869|Cercles de canell
+870|Enrotllador de canell
+871|Rotacions de canell amb barra recta
+872|Passeig amb jou (yoke)
+873|Esquat Zercher
+874|Curl Zottman
+875|Curl Zottman Scott
