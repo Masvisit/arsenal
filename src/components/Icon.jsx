@@ -38,6 +38,16 @@ const P = {
   flame: 'M12 22a7 7 0 0 0 7-7c0-4-3-6-4-10-2 2-3 4-3 6-1-1-2-2-2-4-2 2-5 5-5 8a7 7 0 0 0 7 7z',
   gauge: 'M4 18a8 8 0 1 1 16 0M12 18l4-6',
   layers: 'M12 3l9 5-9 5-9-5zM3 13l9 5 9-5',
+  barbell: 'M2 12h20M5 7v10M8 8v8M16 8v8M19 7v10',
+  kettlebell: 'M9 7a3 3 0 0 1 6 0M8 7h8M7 11a5 5 0 1 0 10 0 5 5 0 0 0-10 0zM9 20h6',
+  cable: 'M12 3v4M12 7l-6 10M12 7l6 10M4 17h4M16 17h4M12 7a1 1 0 1 0 0-.01',
+  band: 'M4 12c0-4 4-6 8-6s8 2 8 6-4 6-8 6-8-2-8-6zM8 12h8',
+  machine: 'M5 3v18M5 5h10v6H5M15 8h4M19 4v8M9 21h-4M12 15v6',
+  grid: 'M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z',
+  home2: 'M4 10l8-6 8 6v10H4zM10 20v-6h4v6',
+  tree: 'M12 3l6 9h-4l4 6H6l4-6H6zM12 18v3',
+  download: 'M12 4v12M7 11l5 5 5-5M5 20h14',
+  upload: 'M12 20V8M7 13l5-5 5 5M5 4h14',
 };
 
 export default function Icon({ name, size = 20, className = '', strokeWidth = 1.8 }) {

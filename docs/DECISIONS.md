@@ -17,3 +17,10 @@ Format: `AAAA-MM-DD · decisió · motiu`
 - 2026-11-04 · Els exercicis "strength" del dataset que són salts (p. ex. "Freehand Jump Squat") es tracten com a pliometria: només per a Potència i Agent Rural. · Coherència amb la secció 7.1.
 - 2026-11-04 · Llista curada `core` de 190 exercicis habituals a `src/data/core-exercises.json` (+ els propis marcats `core`). · Secció 7.4 (+2 si és core).
 - 2026-11-04 · Títol automàtic en ordre anatòmic fix ("Pit, espatlles i tríceps"), sigui quin sigui l'ordre de selecció. · Títols estables.
+- 2026-11-04 · react-body-highlighter només té un model de cos: el selector Home/Dona canvia les referències de nivell, no el dibuix. La previsualització de Crear no té el commutador Home/Dona de l'original. · Limitació de la llibreria fixada a l'stack.
+- 2026-11-04 · Cada polígon del mapa s'etiqueta amb el seu múscul (`data-muscle`, `aria-label` en català, focus i Enter/Espai) segons l'ordre de `src/assets` de la llibreria 2.0.5 (`bodyMapPolygons.js`). · Accessibilitat i proves amb Playwright; si s'actualitza la llibreria cal regenerar-ho.
+- 2026-11-04 · Primer ús: es creen 4 llocs (Gimnàs = Gimnàs complet, Casa = Casa bàsica, Jardí = Casolà amb 20 m per córrer, Parc = Parc de cal·listènia). · Llocs inicials suggerits a la secció 5.1.
+- 2026-11-04 · "Generar avui" amb perfil fet → assistent ràpid de 3 passos (Lloc → Temps → Músculs) amb enllaç "Canviar perfil". L'estat de l'assistent es desa a sessionStorage. · Secció 6.
+- 2026-11-04 · "Començar" porta a una pantalla "Properament" (mode en directe = Fase 2). "Pla setmanal" i "Construir manualment" surten com a "Properament" a Crear. · Abast de la Fase 1.
+- 2026-11-04 · Les molèsties es pregunten al pas 5 i es desen al perfil (persisteixen entre sessions). · Són una dada estable de l'usuari.
+- 2026-11-04 · Al mòbil el botó del resultat diu només "Desar" (a partir de 640 px, "Desar entrenament"). · Cabia en dues línies a 390 px.

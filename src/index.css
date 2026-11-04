@@ -26,3 +26,5 @@ body { min-height: 100dvh; overscroll-behavior-y: none; }
 
 @keyframes progress { from { width: 4%; } to { width: 100%; } }
 .animate-progress { animation: progress 1.1s ease-out forwards; }
+.rbh polygon:focus { outline: none; }
+.rbh polygon:focus-visible { stroke: #ffffff; stroke-width: 1.2; }

@@ -10,10 +10,13 @@ const NAV = [
 
 // Pantalles a pantalla completa (sense barra de navegació)
 const FULLSCREEN = [/^\/assistent/, /^\/generant/];
+// Pantalles amb barra d'accions pròpia a baix: sense navegació inferior al mòbil
+const OWN_BOTTOM_BAR = [/^\/entrenament/];
 
 export default function Layout() {
   const { pathname } = useLocation();
   const full = FULLSCREEN.some((r) => r.test(pathname));
+  const ownBar = OWN_BOTTOM_BAR.some((r) => r.test(pathname));
   return (
     <div className="min-h-[100dvh] lg:flex">
       {!full && (
@@ -34,7 +37,7 @@ export default function Layout() {
       <main className={`mx-auto w-full pt-safe ${full ? '' : 'max-w-5xl pb-28 lg:pb-10'}`}>
         <Outlet />
       </main>
-      {!full && (
+      {!full && !ownBar && (
         <nav className="pb-safe fixed inset-x-0 bottom-0 z-30 border-t border-line bg-bg/95 backdrop-blur lg:hidden">
           <div className="mx-auto flex max-w-md justify-around pt-1">
             {NAV.map((n) => (

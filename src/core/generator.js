@@ -144,7 +144,7 @@ function computeLoad(c, p, ctx) {
   const reps = p.seconds ? 12 : Math.round((p.repsLow + p.repsHigh) / 2);
   const target = p.explosive ? est.kg * 0.55 : loadForReps(est.kg, reps, p.rir ?? 2);
   const pick = nearestAchievable(target, options);
-  let chips = optionsInRange(options, target * 0.8, target * 1.15, 5);
+  let chips = optionsInRange(options, target * 0.7, target * 1.2, 5);
   if (!chips.some((o) => o.kg === pick.kg)) chips = sortUnique([...chips, pick]).slice(-5);
   return {
     targetKg: Math.round(target * 10) / 10, pick, chips, estimated: true, fromReference: est.fromReference, oneRM: est.kg, maxKg, options,
@@ -221,7 +221,7 @@ export function buildEntry(c, slot, ctx) {
   const load = computeLoad(c, p, ctx);
   let adaptation = null;
   if (load?.oneRM && load.maxKg && !c.ex.fixedLoadKg) {
-    adaptation = adaptForLoad({ oneRM: load.oneRM, maxKg: load.maxKg, p, goal, unilateral: c.req.unilateral });
+    adaptation = adaptForLoad({ oneRM: load.oneRM, maxKg: load.maxKg, p, goal, unilateral: c.req.unilateral, limb: LOWER.has(c.targets.primary[0]) ? 'leg' : 'arm' });
     if (adaptation) {
       p = { ...p, repsLow: adaptation.repsLow, repsHigh: adaptation.repsHigh, restSec: adaptation.restSec };
       const top = load.options[load.options.length - 1];

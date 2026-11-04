@@ -1,0 +1,4 @@
+// Ordre dels polígons de react-body-highlighter 2.0.5 (generat a partir de src/assets/index.ts).
+// Serveix per etiquetar cada zona del mapa (accessibilitat i proves).
+export const ANTERIOR_POLYGONS = ["chest","chest","obliques","obliques","abs","abs","biceps","biceps","triceps","triceps","neck","neck","front-deltoids","front-deltoids","head","abductors","abductors","quadriceps","quadriceps","quadriceps","quadriceps","quadriceps","quadriceps","knees","knees","calves","calves","calves","calves","forearm","forearm","forearm","forearm"];
+export const POSTERIOR_POLYGONS = ["head","trapezius","trapezius","back-deltoids","back-deltoids","upper-back","upper-back","triceps","triceps","triceps","triceps","lower-back","lower-back","forearm","forearm","forearm","forearm","gluteal","gluteal","adductor","adductor","hamstring","hamstring","hamstring","hamstring","knees","knees","calves","calves","calves","calves","left-soleus","right-soleus"];

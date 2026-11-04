@@ -28,7 +28,7 @@ const ONE_AND_HALF_FACTOR = 0.65;
  * @param p prescripció { repsLow, repsHigh, rir, restSec }
  * @returns null si no cal adaptar; si no { strategies:[codi], repsLow, repsHigh, tempo?, restSec?, text }
  */
-export function adaptForLoad({ oneRM, maxKg, p, goal = 'muscle', unilateral = false }) {
+export function adaptForLoad({ oneRM, maxKg, p, goal = 'muscle', unilateral = false, limb = 'leg' }) {
   if (!oneRM || !maxKg || p.seconds || p.emom) return null;
   const capacity = Math.floor(repsToFailure(oneRM, maxKg)) - (p.rir ?? 2);
   if (capacity <= p.repsHigh) return null;
@@ -42,7 +42,7 @@ export function adaptForLoad({ oneRM, maxKg, p, goal = 'muscle', unilateral = fa
   let effective = capacity;
   const bits = [];
 
-  if (unilateral) { strategies.push('unilateral'); bits.push('treballem a una cama / un braç'); }
+  if (unilateral) { strategies.push('unilateral'); bits.push(limb === 'arm' ? 'treballem a un braç' : 'treballem a una cama'); }
 
   if (goal === 'strength' || goal === 'power') {
     strategies.push('strengthLimit');
