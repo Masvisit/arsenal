@@ -226,7 +226,8 @@ export function exerciseTargets(ex) {
 
 /** Títol automàtic segons els targets seleccionats ("Pit, espatlles i tríceps"). */
 export function workoutTitle(targets) {
-  const words = uniq(targets.map((t) => TARGET_SHORT[t] || t).map((w) => w.toLowerCase()));
+  const ordered = [...targets].sort((a, b) => TARGETS.indexOf(a) - TARGETS.indexOf(b));
+  const words = uniq(ordered.map((t) => TARGET_SHORT[t] || t).map((w) => w.toLowerCase()));
   if (words.length === 0) return 'Entrenament';
   if (words.length > 5) return 'Entrenament de cos sencer';
   const cap = (s) => s.charAt(0).toUpperCase() + s.slice(1);
