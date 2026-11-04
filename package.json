@@ -1,0 +1,33 @@
+{
+  "name": "arsenal",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview --port 4173 --strictPort",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "data": "node scripts/fetch-exercises.mjs",
+    "audit": "node scripts/audit-requirements.mjs",
+    "shots": "node scripts/screenshots.mjs"
+  },
+  "dependencies": {
+    "react": "18.3.1",
+    "react-body-highlighter": "2.0.5",
+    "react-dom": "18.3.1",
+    "react-router-dom": "6.30.6",
+    "zustand": "5.0.8"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "4.7.0",
+    "autoprefixer": "10.4.20",
+    "playwright": "1.49.1",
+    "postcss": "8.4.49",
+    "tailwindcss": "3.4.19",
+    "vite": "5.4.21",
+    "vite-plugin-pwa": "0.21.2",
+    "vitest": "2.1.9"
+  }
+}
