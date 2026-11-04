@@ -1,0 +1,106 @@
+[
+  {
+    "id": "gym-full",
+    "name": "Gimnàs complet",
+    "kind": "gym",
+    "description": "Barres, discs, mancuernes, bancs, gàbia, politges i màquines.",
+    "constraints": { "noJumps": false, "lowCeiling": false, "fragileFloor": false, "runSpaceM": 0 },
+    "items": [
+      { "catalogId": "barbell_olympic" },
+      { "catalogId": "barbell_ez" },
+      { "catalogId": "plates", "attrs": { "plates": [{ "kg": 1.25, "qty": 4 }, { "kg": 2.5, "qty": 4 }, { "kg": 5, "qty": 4 }, { "kg": 10, "qty": 4 }, { "kg": 15, "qty": 2 }, { "kg": 20, "qty": 6 }, { "kg": 25, "qty": 2 }] } },
+      { "catalogId": "dumbbells_fixed" },
+      { "catalogId": "kettlebells", "attrs": { "weights": [8, 12, 16, 20, 24] } },
+      { "catalogId": "bench_flat" },
+      { "catalogId": "bench_adjustable" },
+      { "catalogId": "rack" },
+      { "catalogId": "dip_station" },
+      { "catalogId": "cable_station" },
+      { "catalogId": "smith" },
+      { "catalogId": "leg_press" },
+      { "catalogId": "hack_squat" },
+      { "catalogId": "leg_extension" },
+      { "catalogId": "leg_curl" },
+      { "catalogId": "lat_pulldown" },
+      { "catalogId": "seated_row" },
+      { "catalogId": "pec_deck" },
+      { "catalogId": "chest_press" },
+      { "catalogId": "shoulder_press" },
+      { "catalogId": "assisted_pullup_dip" },
+      { "catalogId": "back_extension" },
+      { "catalogId": "adductor_abductor" },
+      { "catalogId": "calf_machine" },
+      { "catalogId": "tube_bands" },
+      { "catalogId": "ab_wheel" },
+      { "catalogId": "fitball" },
+      { "catalogId": "medicine_ball" },
+      { "catalogId": "plyo_box" },
+      { "catalogId": "jump_rope" },
+      { "catalogId": "mat" },
+      { "catalogId": "treadmill" },
+      { "catalogId": "rower" }
+    ]
+  },
+  {
+    "id": "home-basic",
+    "name": "Casa bàsica",
+    "kind": "home",
+    "description": "Mancuernes ajustables, banc, barra de dominades a la porta i gomes.",
+    "constraints": { "noJumps": true, "lowCeiling": true, "fragileFloor": true, "runSpaceM": 0 },
+    "items": [
+      { "catalogId": "dumbbells_adjustable" },
+      { "catalogId": "bench_adjustable", "attrs": { "decline": false } },
+      { "catalogId": "pullup_bar", "attrs": { "type": "door", "rings": false } },
+      { "catalogId": "tube_bands" },
+      { "catalogId": "minibands" },
+      { "catalogId": "mat" },
+      { "catalogId": "chair" },
+      { "catalogId": "towel" },
+      { "catalogId": "wall" },
+      { "catalogId": "door" }
+    ]
+  },
+  {
+    "id": "park",
+    "name": "Parc de cal·listènia",
+    "kind": "park",
+    "description": "Barres, paral·leles, bancs i espai per córrer.",
+    "constraints": { "noJumps": false, "lowCeiling": false, "fragileFloor": false, "runSpaceM": 50 },
+    "items": [
+      { "catalogId": "pullup_bar", "attrs": { "type": "rig", "rings": true } },
+      { "catalogId": "dip_station" },
+      { "catalogId": "park" },
+      { "catalogId": "step" },
+      { "catalogId": "wall" }
+    ]
+  },
+  {
+    "id": "bodyweight",
+    "name": "Només pes corporal",
+    "kind": "home",
+    "description": "Res més que el terra i una paret.",
+    "constraints": { "noJumps": false, "lowCeiling": false, "fragileFloor": false, "runSpaceM": 0 },
+    "items": [
+      { "catalogId": "wall" }
+    ]
+  },
+  {
+    "id": "homemade",
+    "name": "Casolà",
+    "kind": "home",
+    "description": "Garrafes, motxilla, cadira, tovallola i drap.",
+    "constraints": { "noJumps": false, "lowCeiling": false, "fragileFloor": false, "runSpaceM": 0 },
+    "items": [
+      { "catalogId": "jug", "attrs": { "volumeL": 8, "qty": 2, "content": "sand" } },
+      { "catalogId": "backpack", "attrs": { "maxKg": 15 } },
+      { "catalogId": "chair" },
+      { "catalogId": "towel" },
+      { "catalogId": "rag" },
+      { "catalogId": "wall" },
+      { "catalogId": "door" },
+      { "catalogId": "sofa" },
+      { "catalogId": "table" },
+      { "catalogId": "step" }
+    ]
+  }
+]
