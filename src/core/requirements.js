@@ -27,6 +27,7 @@ const EXCLUDED = [
   [/^crucifix$/i, 'Necessita implements de strongman'],
   [/lunge sprint/i, 'Màquina específica poc habitual'],
   [/prone manual hamstring/i, 'Cal un company que faci la resistència'],
+  [/^medicine ball full twist$|^return push from stance$/i, 'Cal un company'],
 ];
 
 // ---------- Classificació manual per a equipment "other" / null i casos especials ----------
@@ -48,7 +49,7 @@ const MANUAL = {
   'Car Drivers': ['plates'],
   'Depth Jump Leap': ['plyo_box'],
   'Dips - Chest Version': ['dip_station'],
-  'Donkey Calf Raises': ['box_or_step'],
+  'Donkey Calf Raises': ['machine:calf_machine'],
   'Drop Push': ['box_or_step'],
   "Farmer's Walk": ['dumbbells'],
   'Forward Drag with Press': ['sled'],
@@ -111,7 +112,6 @@ const MANUAL = {
   'Svend Press': ['plates'],
   'Tire Flip': ['tire'],
   'Trap Bar Deadlift': ['trap_bar'],
-  'Weighted Bench Dip': ['bench_flat', 'plates'],
   'Weighted Pull Ups': ['pullup_bar', 'weight_vest'],
   'Weighted Sit-Ups - With Bands': ['bench_decline', 'bands'],
   'Weighted Squat': ['dip_belt', 'box_or_step'],
@@ -130,7 +130,26 @@ const MANUAL = {
   'Linear Acceleration Wall Drill': ['wall'],
   'Moving Claw Series': ['run_space'],
   'Side Standing Long Jump': [],
-  // casos especials d'altres categories
+  // casos especials d'altres categories (revisats amb les instruccions)
+  'Body Tricep Press': ['low_bar'],
+  'Incline Push-Up': [['box_or_step', 'bench_flat', 'low_bar', 'table']],
+  'Incline Push-Up Close-Grip': [['box_or_step', 'bench_flat', 'low_bar', 'table']],
+  'Incline Push-Up Medium': [['box_or_step', 'bench_flat', 'low_bar', 'table']],
+  'Incline Push-Up Reverse Grip': [['box_or_step', 'bench_flat', 'low_bar', 'table']],
+  'Incline Push-Up Wide': [['box_or_step', 'bench_flat', 'low_bar', 'table']],
+  'Leg Lift': [['chair', 'rack', 'wall', 'wall_bars']],
+  'Seated Leg Tucks': ['bench_flat'],
+  'Single-Leg Stride Jump': ['box_or_step'],
+  'Stride Jump Crossover': ['box_or_step'],
+  'Medicine Ball Chest Pass': ['medicine_ball', 'wall'],
+  'Catch and Overhead Throw': ['medicine_ball', 'wall'],
+  'Chest Push (multiple response)': ['medicine_ball', 'wall'],
+  'Supine Chest Throw': ['medicine_ball', 'wall'],
+  'Supine One-Arm Overhead Throw': ['medicine_ball', 'wall'],
+  'Supine Two-Arm Overhead Throw': ['medicine_ball', 'wall'],
+  'Standing Two-Arm Overhead Throw': ['medicine_ball', 'wall'],
+  'Backward Medicine Ball Throw': ['medicine_ball', 'run_space'],
+  'Weighted Bench Dip': ['bench_flat', 'plates'],
   'Close-Grip Push-Up off of a Dumbbell': ['dumbbells'],
   'Standing Towel Triceps Extension': ['towel'],
   'Natural Glute Ham Raise': ['foot_anchor'],
@@ -206,11 +225,12 @@ function cableCap(name) {
 export function movementPattern(ex) {
   const n = ex.nameEn || ex.name;
   if (ex.pattern) return ex.pattern;
-  if (/walk|carry|farmer|yoke/i.test(n)) return 'carry';
   if (/lunge|split squat|step[- ]?up|bulgarian|pistol|single-leg.*squat|one leg barbell squat/i.test(n)) return 'lunge';
-  if (/deadlift|good morning|hip thrust|glute bridge|bridge|swing|pull through|romanian|hyperextension|back extension|glute ham|nordic|stiff/i.test(n)) return 'hinge';
+  if (/walk|carry|farmer|yoke/i.test(n)) return 'carry';
+  if (/hip thrust|glute bridge|butt lift|hip raise|\bbridge\b/i.test(n) && !/side bridge/i.test(n)) return 'bridge';
+  if (/deadlift|good morning|swing|pull through|romanian|hyperextension|back extension|glute ham|nordic|stiff/i.test(n)) return 'hinge';
   if (/squat|leg press|hack/i.test(n)) return 'squat';
-  if (/pull-?ups?|chin|pulldown|muscle up/i.test(n)) return 'vertical_pull';
+  if (/pull-?ups?|\bchins?\b|chin-up|pulldown|muscle up/i.test(n)) return 'vertical_pull';
   if (/row|face pull|pull apart/i.test(n)) return 'horizontal_pull';
   if (/shoulder press|military|overhead press|push press|arnold|handstand|jerk|pike|press behind/i.test(n)) return 'vertical_push';
   if (/bench press|push-?ups?|pushups|floor press|chest press|dip|flye?s?\b|crossover|pec deck|butterfly|svend/i.test(n)) return 'horizontal_push';
@@ -222,7 +242,7 @@ export function movementPattern(ex) {
   return `iso:${t}`;
 }
 
-export const COMPOUND_PATTERNS = ['squat', 'hinge', 'lunge', 'horizontal_push', 'vertical_push', 'horizontal_pull', 'vertical_pull', 'carry'];
+export const COMPOUND_PATTERNS = ['squat', 'hinge', 'bridge', 'lunge', 'horizontal_push', 'vertical_push', 'horizontal_pull', 'vertical_pull', 'carry'];
 
 const RE_UNILATERAL = /one[- ]arm|one[- ]leg|single[- ]arm|single[- ]leg|single leg|alternat|split squat|lunge|step[- ]?ups?|pistol|bulgarian|unilateral|one-legged|one arm|one handed/i;
 const RE_JUMP = /jump|hop|bound|leap|skip|burpee|plyo|tuck jump|star jump|depth|skater|carioca|frog hops|box shuffle|bench sprint|stride/i;
@@ -281,7 +301,7 @@ function computeRequirements(ex) {
     case 'barbell': {
       requires = ['barbell', 'plates', ...benchCaps(name, { barbell: true })];
       if (RE_RACK_BARBELL.test(name) && !/jump|hack|step|lunge|split|bands$/i.test(name)) requires.push('rack');
-      if (/landmine/i.test(name)) requires.push('landmine');
+      if (/landmine|jammer/i.test(name)) requires.push('landmine');
       if (/with bands|reverse band/i.test(name)) requires.push('bands');
       if (/step ups?/i.test(name)) requires.push('box_or_step');
       if (/box squat|to a bench/i.test(name)) requires.push('box_or_step');
@@ -324,7 +344,7 @@ function computeRequirements(ex) {
       break;
     }
     case 'body only': {
-      if (/pull-?ups?|pullup|chin|hanging|muscle up|gorilla|body-up/i.test(name)) requires.push('pullup_bar');
+      if (/pull-?ups?|pullup|\bchin|hanging|muscle up|gorilla|body-up/i.test(name)) requires.push('pullup_bar');
       if (/\bdips?\b/i.test(name)) requires.push('dip_station');
       if (/inverted row/i.test(name)) requires.push('low_bar');
       if (/handstand/i.test(name)) requires.push('wall');

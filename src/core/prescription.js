@@ -14,15 +14,32 @@ export const GOAL_LABELS = {
 
 export const LEVEL_LABELS = { novice: 'Novell', beginner: 'Principiant', intermediate: 'Intermedi', advanced: 'Avançat' };
 
-// Esquemes base: [sèries, repsMin, repsMax, RIR, descans (s)]
+// Esquemes base: [sèries, repsMin, repsMax, RIR, descans (s)]. Exigents: a prop de la fallada.
 const SCHEMES = {
-  muscle: { compound: [4, 6, 10, 2, 120], isolation: [3, 10, 15, 1, 75] },
-  strength: { compound: [4, 3, 6, 2, 180], isolation: [3, 6, 10, 2, 120] },
-  fatloss: { compound: [3, 10, 15, 2, 45], isolation: [3, 10, 15, 2, 45] },
-  endurance: { compound: [3, 15, 25, 2, 45], isolation: [2, 15, 25, 2, 40] },
-  power: { compound: [4, 3, 5, 3, 150], isolation: [3, 6, 10, 2, 90], explosive: [4, 3, 5, 3, 150] },
-  agentRural: { compound: [4, 5, 6, 2, 180], isolation: [3, 8, 12, 2, 90], explosive: [4, 4, 6, 3, 150] },
+  muscle: { compound: [4, 6, 10, 1, 120], isolation: [4, 10, 15, 1, 75] },
+  strength: { compound: [5, 3, 6, 1, 180], isolation: [4, 6, 10, 1, 120] },
+  fatloss: { compound: [4, 10, 15, 1, 45], isolation: [4, 12, 15, 1, 45] },
+  endurance: { compound: [3, 15, 25, 1, 45], isolation: [3, 15, 25, 1, 40] },
+  power: { compound: [4, 3, 5, 3, 150], isolation: [4, 6, 10, 1, 90], explosive: [4, 3, 5, 3, 150] },
+  agentRural: { compound: [4, 5, 6, 1, 180], isolation: [4, 8, 12, 1, 90], explosive: [4, 4, 6, 3, 150] },
 };
+
+// Blocs A-B-C: rondes, canvi entre exercicis dins la ronda i descans en acabar cada ronda (s)
+export const BLOCK_PARAMS = {
+  muscle: { rounds: 4, transitionSec: 20, restAfterRoundSec: 90 },
+  strength: { rounds: 4, transitionSec: 45, restAfterRoundSec: 150 },
+  fatloss: { rounds: 4, transitionSec: 10, restAfterRoundSec: 60 },
+  endurance: { rounds: 3, transitionSec: 10, restAfterRoundSec: 60 },
+  power: { rounds: 4, transitionSec: 45, restAfterRoundSec: 120 },
+  agentRural: { rounds: 4, transitionSec: 30, restAfterRoundSec: 120 },
+};
+
+export function blockParams(goal = 'muscle', level = 'intermediate') {
+  const b = { ...(BLOCK_PARAMS[goal] || BLOCK_PARAMS.muscle) };
+  if (level === 'novice') { b.rounds = Math.max(2, b.rounds - 1); b.restAfterRoundSec += 30; }
+  if (level === 'advanced') b.rounds += 1;
+  return b;
+}
 
 // Duració → nombre d'exercicis (secció 7.2)
 const COUNT_BY_DURATION = { 20: 3, 30: 4, 45: 5, 60: 6, 75: 7, 90: 8 };
@@ -37,7 +54,7 @@ export function exerciseCount(durationMin, goal) {
 
 export function isTimed(ex) {
   const n = ex.nameEn || ex.name;
-  return !!ex.seconds || /plank|hold|wall sit|hang\b|vacuum|isometric|side bridge|farmer|walk|carry|battling ropes|rope jumping/i.test(n);
+  return !!ex.seconds || (/plank|hold|wall sit|hang\b|vacuum|isometric|side bridge|farmer|walk|carry|battling ropes|rope jumping/i.test(n) && !/lunge/i.test(n));
 }
 
 /**

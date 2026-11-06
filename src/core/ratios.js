@@ -47,7 +47,7 @@ export function baseLift1RM(lift, profile = {}) {
 
 const PATTERN_LIFT = {
   horizontal_push: 'bench', vertical_push: 'ohp', squat: 'squat', lunge: 'squat', hinge: 'deadlift',
-  horizontal_pull: 'row', vertical_pull: 'row', carry: 'deadlift',
+  horizontal_pull: 'row', vertical_pull: 'row', carry: 'deadlift', bridge: 'deadlift',
   'iso:biceps': 'row', 'iso:triceps': 'bench', 'iso:chest': 'bench', 'iso:side-delts': 'ohp',
   'iso:front-delts': 'ohp', 'iso:rear-delts': 'ohp', 'iso:quads': 'squat', 'iso:hamstrings': 'deadlift',
   'iso:calves': 'squat', 'iso:glutes': 'deadlift', 'iso:traps': 'deadlift', 'iso:lats': 'row',
@@ -62,6 +62,7 @@ const FACTORS = {
   squat: { barbell: 1, dumbbell: 0.28, single: 0.4, stack: 1.6, vest: 0.35 },
   lunge: { barbell: 0.45, dumbbell: 0.2, single: 0.3, stack: 0.8, vest: 0.3 },
   hinge: { barbell: 0.75, dumbbell: 0.3, single: 0.4, stack: 0.8, vest: 0.4 },
+  bridge: { barbell: 0.75, dumbbell: 0.3, single: 0.4, stack: 0.8, vest: 0.4 },
   horizontal_pull: { barbell: 1, dumbbell: 0.4, single: 0.45, stack: 1, vest: 0.25 },
   vertical_pull: { barbell: 0.9, dumbbell: 0.4, single: 0.4, stack: 1.0, vest: 0.15 },
   carry: { barbell: 0.6, dumbbell: 0.45, single: 0.6, stack: 0.6, vest: 0.5 },

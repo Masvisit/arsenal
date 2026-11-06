@@ -1,371 +1,1636 @@
 [
   {
-    "id": "custom_jug_goblet_squat", "custom": true, "core": true,
-    "name": "Esquat goblet amb garrafa", "nameEn": "Jug Goblet Squat",
-    "category": "strength", "level": "beginner", "mechanic": "compound", "force": "push", "equipment": "other",
-    "primaryMuscles": ["quadriceps"], "secondaryMuscles": ["glutes", "hamstrings", "abdominals"],
-    "requires": ["jug"], "load": { "cap": "jug", "pair": false }, "pattern": "squat", "unilateral": false,
+    "id": "custom_jug_goblet_squat",
+    "custom": true,
+    "core": true,
+    "name": "Esquat goblet amb garrafa",
+    "nameEn": "Jug Goblet Squat",
+    "category": "strength",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "push",
+    "equipment": "other",
+    "primaryMuscles": [
+      "quadriceps"
+    ],
+    "secondaryMuscles": [
+      "glutes",
+      "hamstrings",
+      "abdominals"
+    ],
+    "requires": [
+      "jug"
+    ],
+    "load": {
+      "cap": "jug",
+      "pair": false
+    },
+    "pattern": "squat",
+    "unilateral": false,
     "substituteFor": "Goblet_Squat",
-    "instructions": ["Agafa la garrafa per la nansa amb les dues mans, enganxada al pit.", "Peus a l'amplada de les espatlles, puntes lleugerament obertes.", "Baixa fins que les cuixes quedin paral·leles al terra amb el pit amunt.", "Puja empenyent el terra amb tot el peu."],
+    "instructions": [
+      "Agafa la garrafa per la nansa amb les dues mans, enganxada al pit.",
+      "Peus a l'amplada de les espatlles, puntes lleugerament obertes.",
+      "Baixa fins que les cuixes quedin paral·leles al terra amb el pit amunt.",
+      "Puja empenyent el terra amb tot el peu."
+    ],
     "safety": "Tap ben cargolat. Si la garrafa és d'aigua, mou-la a poc a poc."
   },
   {
-    "id": "custom_jug_bulgarian_split_squat", "custom": true, "core": true,
-    "name": "Esquat búlgar amb garrafes (peu a la cadira)", "nameEn": "Jug Bulgarian Split Squat",
-    "category": "strength", "level": "intermediate", "mechanic": "compound", "force": "push", "equipment": "other",
-    "primaryMuscles": ["quadriceps"], "secondaryMuscles": ["glutes", "hamstrings"],
-    "requires": ["jug", "box_or_step"], "load": { "cap": "jug", "pair": true }, "pattern": "lunge", "unilateral": true,
+    "id": "custom_jug_bulgarian_split_squat",
+    "custom": true,
+    "core": true,
+    "name": "Esquat búlgar amb garrafes (peu a la cadira)",
+    "nameEn": "Jug Bulgarian Split Squat",
+    "category": "strength",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "push",
+    "equipment": "other",
+    "primaryMuscles": [
+      "quadriceps"
+    ],
+    "secondaryMuscles": [
+      "glutes",
+      "hamstrings"
+    ],
+    "requires": [
+      "jug",
+      "box_or_step"
+    ],
+    "load": {
+      "cap": "jug",
+      "pair": true
+    },
+    "pattern": "lunge",
+    "unilateral": true,
     "substituteFor": "Split_Squat_with_Dumbbells",
-    "instructions": ["Posa l'empenya del peu de darrere sobre una cadira robusta recolzada a la paret.", "Una garrafa a cada mà, braços estirats.", "Baixa fins que el genoll de darrere gairebé toqui a terra.", "Puja empenyent amb la cama de davant. Fes totes les repeticions i canvia de cama."],
+    "instructions": [
+      "Posa l'empenya del peu de darrere sobre una cadira robusta recolzada a la paret.",
+      "Una garrafa a cada mà, braços estirats.",
+      "Baixa fins que el genoll de darrere gairebé toqui a terra.",
+      "Puja empenyent amb la cama de davant. Fes totes les repeticions i canvia de cama."
+    ],
     "safety": "Cadira sense rodes i contra la paret."
   },
   {
-    "id": "custom_jug_one_arm_row", "custom": true, "core": true,
-    "name": "Rem a una mà amb garrafa", "nameEn": "Jug One-Arm Row",
-    "category": "strength", "level": "beginner", "mechanic": "compound", "force": "pull", "equipment": "other",
-    "primaryMuscles": ["middle back"], "secondaryMuscles": ["lats", "biceps", "shoulders"],
-    "requires": ["jug"], "load": { "cap": "jug", "pair": false }, "pattern": "horizontal_pull", "unilateral": true,
+    "id": "custom_jug_one_arm_row",
+    "custom": true,
+    "core": true,
+    "name": "Rem a una mà amb garrafa",
+    "nameEn": "Jug One-Arm Row",
+    "category": "strength",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "pull",
+    "equipment": "other",
+    "primaryMuscles": [
+      "middle back"
+    ],
+    "secondaryMuscles": [
+      "lats",
+      "biceps",
+      "shoulders"
+    ],
+    "requires": [
+      "jug"
+    ],
+    "load": {
+      "cap": "jug",
+      "pair": false
+    },
+    "pattern": "horizontal_pull",
+    "unilateral": true,
     "substituteFor": "One-Arm_Dumbbell_Row",
-    "instructions": ["Recolza una mà i un genoll en una cadira o banc.", "Agafa la garrafa amb l'altra mà, braç estirat.", "Porta la garrafa cap al maluc tirant amb el colze.", "Baixa-la controlant."]
+    "instructions": [
+      "Recolza una mà i un genoll en una cadira o banc.",
+      "Agafa la garrafa amb l'altra mà, braç estirat.",
+      "Porta la garrafa cap al maluc tirant amb el colze.",
+      "Baixa-la controlant."
+    ]
   },
   {
-    "id": "custom_jug_romanian_deadlift", "custom": true, "core": true,
-    "name": "Pes mort romanès amb garrafes", "nameEn": "Jug Romanian Deadlift",
-    "category": "strength", "level": "beginner", "mechanic": "compound", "force": "pull", "equipment": "other",
-    "primaryMuscles": ["hamstrings"], "secondaryMuscles": ["glutes", "lower back"],
-    "requires": ["jug"], "load": { "cap": "jug", "pair": true }, "pattern": "hinge", "unilateral": false,
+    "id": "custom_jug_romanian_deadlift",
+    "custom": true,
+    "core": true,
+    "name": "Pes mort romanès amb garrafes",
+    "nameEn": "Jug Romanian Deadlift",
+    "category": "strength",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "pull",
+    "equipment": "other",
+    "primaryMuscles": [
+      "hamstrings"
+    ],
+    "secondaryMuscles": [
+      "glutes",
+      "lower back"
+    ],
+    "requires": [
+      "jug"
+    ],
+    "load": {
+      "cap": "jug",
+      "pair": true
+    },
+    "pattern": "hinge",
+    "unilateral": false,
     "substituteFor": "Stiff-Legged_Dumbbell_Deadlift",
-    "instructions": ["Dret, una garrafa a cada mà davant de les cuixes.", "Genolls lleugerament flexionats, tira el maluc enrere amb l'esquena recta.", "Baixa fins a notar estirament als isquiotibials.", "Torna a pujar empenyent el maluc endavant."]
+    "instructions": [
+      "Dret, una garrafa a cada mà davant de les cuixes.",
+      "Genolls lleugerament flexionats, tira el maluc enrere amb l'esquena recta.",
+      "Baixa fins a notar estirament als isquiotibials.",
+      "Torna a pujar empenyent el maluc endavant."
+    ]
   },
   {
-    "id": "custom_hip_thrust_backpack", "custom": true, "core": true,
-    "name": "Hip thrust amb motxilla o garrafa", "nameEn": "Backpack Hip Thrust",
-    "category": "strength", "level": "beginner", "mechanic": "compound", "force": "push", "equipment": "other",
-    "primaryMuscles": ["glutes"], "secondaryMuscles": ["hamstrings"],
-    "requires": [["backpack", "jug"], "bench_flat"], "load": { "cap": "backpack", "pair": false }, "pattern": "hinge", "unilateral": false,
+    "id": "custom_hip_thrust_backpack",
+    "custom": true,
+    "core": true,
+    "name": "Hip thrust amb motxilla o garrafa",
+    "nameEn": "Backpack Hip Thrust",
+    "category": "strength",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "push",
+    "equipment": "other",
+    "primaryMuscles": [
+      "glutes"
+    ],
+    "secondaryMuscles": [
+      "hamstrings"
+    ],
+    "requires": [
+      [
+        "backpack",
+        "jug"
+      ],
+      "bench_flat"
+    ],
+    "load": {
+      "cap": "backpack",
+      "pair": false
+    },
+    "pattern": "bridge",
+    "unilateral": false,
     "substituteFor": "Barbell_Hip_Thrust",
-    "instructions": ["Esquena alta recolzada al sofà, banc o cadira.", "Motxilla o garrafa sobre el maluc, aguantada amb les mans.", "Puja el maluc fins que el cos quedi recte de genolls a espatlles.", "Aguanta 1 s a dalt i baixa controlant."]
+    "instructions": [
+      "Esquena alta recolzada al sofà, banc o cadira.",
+      "Motxilla o garrafa sobre el maluc, aguantada amb les mans.",
+      "Puja el maluc fins que el cos quedi recte de genolls a espatlles.",
+      "Aguanta 1 s a dalt i baixa controlant."
+    ]
   },
   {
-    "id": "custom_jug_farmer_walk", "custom": true, "core": true,
-    "name": "Passeig del granger amb garrafes o galledes", "nameEn": "Farmer Walk with Jugs",
-    "category": "strength", "level": "beginner", "mechanic": "compound", "force": "static", "equipment": "other",
-    "primaryMuscles": ["forearms"], "secondaryMuscles": ["traps", "abdominals", "glutes"],
-    "requires": ["jug"], "load": { "cap": "jug", "pair": true }, "pattern": "carry", "unilateral": false, "seconds": 40,
-    "instructions": ["Una garrafa o galleda a cada mà.", "Camina dret, espatlles avall i passes curtes.", "No deixis que les garrafes es balancegin."]
+    "id": "custom_jug_farmer_walk",
+    "custom": true,
+    "core": true,
+    "name": "Passeig del granger amb garrafes o galledes",
+    "nameEn": "Farmer Walk with Jugs",
+    "category": "strength",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "static",
+    "equipment": "other",
+    "primaryMuscles": [
+      "forearms"
+    ],
+    "secondaryMuscles": [
+      "traps",
+      "abdominals",
+      "glutes"
+    ],
+    "requires": [
+      "jug"
+    ],
+    "load": {
+      "cap": "jug",
+      "pair": true
+    },
+    "pattern": "carry",
+    "unilateral": false,
+    "seconds": 40,
+    "instructions": [
+      "Una garrafa o galleda a cada mà.",
+      "Camina dret, espatlles avall i passes curtes.",
+      "No deixis que les garrafes es balancegin."
+    ]
   },
   {
-    "id": "custom_sandbag_bear_hug_carry", "custom": true,
-    "name": "Bear hug carry amb sac casolà", "nameEn": "Sandbag Bear Hug Carry",
-    "category": "strength", "level": "beginner", "mechanic": "compound", "force": "static", "equipment": "other",
-    "primaryMuscles": ["abdominals"], "secondaryMuscles": ["middle back", "biceps", "quadriceps"],
-    "requires": ["sandbag"], "load": { "cap": "sandbag", "pair": false }, "pattern": "carry", "unilateral": false, "seconds": 40,
-    "instructions": ["Abraça el sac contra el pit.", "Camina amb passes curtes mantenint el tronc dret."]
+    "id": "custom_sandbag_bear_hug_carry",
+    "custom": true,
+    "name": "Bear hug carry amb sac casolà",
+    "nameEn": "Sandbag Bear Hug Carry",
+    "category": "strength",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "static",
+    "equipment": "other",
+    "primaryMuscles": [
+      "abdominals"
+    ],
+    "secondaryMuscles": [
+      "middle back",
+      "biceps",
+      "quadriceps"
+    ],
+    "requires": [
+      "sandbag"
+    ],
+    "load": {
+      "cap": "sandbag",
+      "pair": false
+    },
+    "pattern": "carry",
+    "unilateral": false,
+    "seconds": 40,
+    "instructions": [
+      "Abraça el sac contra el pit.",
+      "Camina amb passes curtes mantenint el tronc dret."
+    ]
   },
   {
-    "id": "custom_sandbag_shoulder_squat", "custom": true,
-    "name": "Esquat amb sac casolà a l'espatlla", "nameEn": "Sandbag Shoulder Squat",
-    "category": "strength", "level": "intermediate", "mechanic": "compound", "force": "push", "equipment": "other",
-    "primaryMuscles": ["quadriceps"], "secondaryMuscles": ["glutes", "abdominals", "lower back"],
-    "requires": ["sandbag"], "load": { "cap": "sandbag", "pair": false }, "pattern": "squat", "unilateral": false,
-    "instructions": ["Carrega el sac sobre una espatlla.", "Baixa en esquat amb el tronc dret.", "Alterna l'espatlla a cada sèrie."]
+    "id": "custom_sandbag_shoulder_squat",
+    "custom": true,
+    "name": "Esquat amb sac casolà a l'espatlla",
+    "nameEn": "Sandbag Shoulder Squat",
+    "category": "strength",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "push",
+    "equipment": "other",
+    "primaryMuscles": [
+      "quadriceps"
+    ],
+    "secondaryMuscles": [
+      "glutes",
+      "abdominals",
+      "lower back"
+    ],
+    "requires": [
+      "sandbag"
+    ],
+    "load": {
+      "cap": "sandbag",
+      "pair": false
+    },
+    "pattern": "squat",
+    "unilateral": false,
+    "instructions": [
+      "Carrega el sac sobre una espatlla.",
+      "Baixa en esquat amb el tronc dret.",
+      "Alterna l'espatlla a cada sèrie."
+    ]
   },
   {
-    "id": "custom_backpack_pushup", "custom": true, "core": true,
-    "name": "Flexions amb motxilla", "nameEn": "Backpack Push-Up",
-    "category": "strength", "level": "beginner", "mechanic": "compound", "force": "push", "equipment": "other",
-    "primaryMuscles": ["chest"], "secondaryMuscles": ["triceps", "shoulders", "abdominals"],
-    "requires": ["weight_vest"], "load": { "cap": "weight_vest", "pair": false }, "pattern": "horizontal_push", "unilateral": false,
+    "id": "custom_backpack_pushup",
+    "custom": true,
+    "core": true,
+    "name": "Flexions amb motxilla",
+    "nameEn": "Backpack Push-Up",
+    "category": "strength",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "push",
+    "equipment": "other",
+    "primaryMuscles": [
+      "chest"
+    ],
+    "secondaryMuscles": [
+      "triceps",
+      "shoulders",
+      "abdominals"
+    ],
+    "requires": [
+      "weight_vest"
+    ],
+    "load": {
+      "cap": "weight_vest",
+      "pair": false
+    },
+    "pattern": "horizontal_push",
+    "unilateral": false,
     "substituteFor": "Pushups",
-    "instructions": ["Motxilla ben ajustada a l'esquena.", "Mans una mica més obertes que les espatlles.", "Baixa fins que el pit gairebé toqui a terra, cos recte.", "Empeny fins a estirar els braços."],
+    "instructions": [
+      "Motxilla ben ajustada a l'esquena.",
+      "Mans una mica més obertes que les espatlles.",
+      "Baixa fins que el pit gairebé toqui a terra, cos recte.",
+      "Empeny fins a estirar els braços."
+    ],
     "safety": "Tirants ben ajustats i càrrega compacta."
   },
   {
-    "id": "custom_backpack_pullup", "custom": true, "core": true,
-    "name": "Dominades amb motxilla", "nameEn": "Backpack Pull-Up",
-    "category": "strength", "level": "intermediate", "mechanic": "compound", "force": "pull", "equipment": "other",
-    "primaryMuscles": ["lats"], "secondaryMuscles": ["biceps", "middle back"],
-    "requires": ["pullup_bar", "weight_vest"], "load": { "cap": "weight_vest", "pair": false }, "pattern": "vertical_pull", "unilateral": false,
+    "id": "custom_backpack_pullup",
+    "custom": true,
+    "core": true,
+    "name": "Dominades amb motxilla",
+    "nameEn": "Backpack Pull-Up",
+    "category": "strength",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "pull",
+    "equipment": "other",
+    "primaryMuscles": [
+      "lats"
+    ],
+    "secondaryMuscles": [
+      "biceps",
+      "middle back"
+    ],
+    "requires": [
+      "pullup_bar",
+      "weight_vest"
+    ],
+    "load": {
+      "cap": "weight_vest",
+      "pair": false
+    },
+    "pattern": "vertical_pull",
+    "unilateral": false,
     "substituteFor": "Weighted_Pull_Ups",
-    "instructions": ["Motxilla ben ajustada.", "Penja't amb agafada prona, una mica més oberta que les espatlles.", "Puja fins que la barbeta passi la barra.", "Baixa del tot controlant."]
+    "instructions": [
+      "Motxilla ben ajustada.",
+      "Penja't amb agafada prona, una mica més oberta que les espatlles.",
+      "Puja fins que la barbeta passi la barra.",
+      "Baixa del tot controlant."
+    ]
   },
   {
-    "id": "custom_backpack_dip", "custom": true,
-    "name": "Fons amb motxilla", "nameEn": "Backpack Dips",
-    "category": "strength", "level": "intermediate", "mechanic": "compound", "force": "push", "equipment": "other",
-    "primaryMuscles": ["triceps"], "secondaryMuscles": ["chest", "shoulders"],
-    "requires": ["dip_station", "weight_vest"], "load": { "cap": "weight_vest", "pair": false }, "pattern": "horizontal_push", "unilateral": false,
-    "instructions": ["Motxilla ben ajustada.", "Braços estirats a les paral·leles.", "Baixa fins que els colzes facin 90°.", "Empeny fins a dalt."],
-    "limitations": ["shoulder", "elbow"]
+    "id": "custom_backpack_dip",
+    "custom": true,
+    "name": "Fons amb motxilla",
+    "nameEn": "Backpack Dips",
+    "category": "strength",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "push",
+    "equipment": "other",
+    "primaryMuscles": [
+      "triceps"
+    ],
+    "secondaryMuscles": [
+      "chest",
+      "shoulders"
+    ],
+    "requires": [
+      "dip_station",
+      "weight_vest"
+    ],
+    "load": {
+      "cap": "weight_vest",
+      "pair": false
+    },
+    "pattern": "horizontal_push",
+    "unilateral": false,
+    "instructions": [
+      "Motxilla ben ajustada.",
+      "Braços estirats a les paral·leles.",
+      "Baixa fins que els colzes facin 90°.",
+      "Empeny fins a dalt."
+    ],
+    "limitations": [
+      "shoulder",
+      "elbow"
+    ]
   },
   {
-    "id": "custom_backpack_bulgarian_split_squat", "custom": true, "core": true,
-    "name": "Esquat búlgar amb motxilla (peu a la cadira)", "nameEn": "Backpack Bulgarian Split Squat",
-    "category": "strength", "level": "intermediate", "mechanic": "compound", "force": "push", "equipment": "other",
-    "primaryMuscles": ["quadriceps"], "secondaryMuscles": ["glutes", "hamstrings"],
-    "requires": ["weight_vest", "box_or_step"], "load": { "cap": "weight_vest", "pair": false }, "pattern": "lunge", "unilateral": true,
-    "instructions": ["Motxilla ben ajustada.", "Empenya del peu de darrere sobre la cadira.", "Baixa fins que el genoll de darrere gairebé toqui a terra.", "Puja amb la cama de davant."],
+    "id": "custom_backpack_bulgarian_split_squat",
+    "custom": true,
+    "core": true,
+    "name": "Esquat búlgar amb motxilla (peu a la cadira)",
+    "nameEn": "Backpack Bulgarian Split Squat",
+    "category": "strength",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "push",
+    "equipment": "other",
+    "primaryMuscles": [
+      "quadriceps"
+    ],
+    "secondaryMuscles": [
+      "glutes",
+      "hamstrings"
+    ],
+    "requires": [
+      "weight_vest",
+      "box_or_step"
+    ],
+    "load": {
+      "cap": "weight_vest",
+      "pair": false
+    },
+    "pattern": "lunge",
+    "unilateral": true,
+    "instructions": [
+      "Motxilla ben ajustada.",
+      "Empenya del peu de darrere sobre la cadira.",
+      "Baixa fins que el genoll de darrere gairebé toqui a terra.",
+      "Puja amb la cama de davant."
+    ],
     "safety": "Cadira sense rodes i contra la paret."
   },
   {
-    "id": "custom_table_inverted_row", "custom": true, "core": true,
-    "name": "Rem invertit sota una taula robusta", "nameEn": "Table Inverted Row",
-    "category": "strength", "level": "beginner", "mechanic": "compound", "force": "pull", "equipment": "other",
-    "primaryMuscles": ["middle back"], "secondaryMuscles": ["lats", "biceps", "shoulders"],
-    "requires": [["table", "low_bar"]], "load": null, "pattern": "horizontal_pull", "unilateral": false,
+    "id": "custom_table_inverted_row",
+    "custom": true,
+    "core": true,
+    "name": "Rem invertit sota una taula robusta",
+    "nameEn": "Table Inverted Row",
+    "category": "strength",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "pull",
+    "equipment": "other",
+    "primaryMuscles": [
+      "middle back"
+    ],
+    "secondaryMuscles": [
+      "lats",
+      "biceps",
+      "shoulders"
+    ],
+    "requires": [
+      [
+        "table",
+        "low_bar"
+      ]
+    ],
+    "load": null,
+    "pattern": "horizontal_pull",
+    "unilateral": false,
     "substituteFor": "Inverted_Row",
-    "instructions": ["Estira't sota la taula i agafa la vora amb les dues mans.", "Cos recte, talons a terra.", "Porta el pit cap a la vora de la taula.", "Baixa controlant."],
+    "instructions": [
+      "Estira't sota la taula i agafa la vora amb les dues mans.",
+      "Cos recte, talons a terra.",
+      "Porta el pit cap a la vora de la taula.",
+      "Baixa controlant."
+    ],
     "safety": "Comprova que la taula no bolca: posa-hi pes a sobre."
   },
   {
-    "id": "custom_door_towel_row", "custom": true, "core": true,
-    "name": "Rem amb tovallola a la porta", "nameEn": "Door Towel Row",
-    "category": "strength", "level": "beginner", "mechanic": "compound", "force": "pull", "equipment": "other",
-    "primaryMuscles": ["middle back"], "secondaryMuscles": ["biceps", "lats"],
-    "requires": ["towel", "door"], "load": null, "pattern": "horizontal_pull", "unilateral": false,
-    "instructions": ["Passa la tovallola pels dos poms d'una porta tancada (que obri cap a tu).", "Peus a prop de la porta, tira el cos enrere amb els braços estirats.", "Porta el pit cap a la porta.", "Torna a baix controlant."],
+    "id": "custom_door_towel_row",
+    "custom": true,
+    "core": true,
+    "name": "Rem amb tovallola a la porta",
+    "nameEn": "Door Towel Row",
+    "category": "strength",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "pull",
+    "equipment": "other",
+    "primaryMuscles": [
+      "middle back"
+    ],
+    "secondaryMuscles": [
+      "biceps",
+      "lats"
+    ],
+    "requires": [
+      "towel",
+      "door"
+    ],
+    "load": null,
+    "pattern": "horizontal_pull",
+    "unilateral": false,
+    "instructions": [
+      "Passa la tovallola pels dos poms d'una porta tancada (que obri cap a tu).",
+      "Peus a prop de la porta, tira el cos enrere amb els braços estirats.",
+      "Porta el pit cap a la porta.",
+      "Torna a baix controlant."
+    ],
     "safety": "Porta tancada cap a tu i comprova el pom."
   },
   {
-    "id": "custom_towel_isometric_row", "custom": true,
-    "name": "Rem isomètric amb tovallola", "nameEn": "Towel Isometric Row",
-    "category": "strength", "level": "beginner", "mechanic": "isolation", "force": "static", "equipment": "other",
-    "primaryMuscles": ["middle back"], "secondaryMuscles": ["biceps", "shoulders"],
-    "requires": ["towel"], "load": null, "pattern": "horizontal_pull", "unilateral": false, "seconds": 20,
-    "instructions": ["Trepitja el centre de la tovallola o passa-la per un pal fix.", "Tira amb tota la força que puguis sense moure't.", "Aguanta la tensió el temps indicat."]
+    "id": "custom_towel_isometric_row",
+    "custom": true,
+    "name": "Rem isomètric amb tovallola",
+    "nameEn": "Towel Isometric Row",
+    "category": "strength",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "static",
+    "equipment": "other",
+    "primaryMuscles": [
+      "middle back"
+    ],
+    "secondaryMuscles": [
+      "biceps",
+      "shoulders"
+    ],
+    "requires": [
+      "towel"
+    ],
+    "load": null,
+    "pattern": "horizontal_pull",
+    "unilateral": false,
+    "seconds": 20,
+    "instructions": [
+      "Trepitja el centre de la tovallola o passa-la per un pal fix.",
+      "Tira amb tota la força que puguis sense moure't.",
+      "Aguanta la tensió el temps indicat."
+    ]
   },
   {
-    "id": "custom_slider_leg_curl", "custom": true, "core": true,
-    "name": "Curl femoral lliscant amb drap", "nameEn": "Slider Leg Curl",
-    "category": "strength", "level": "beginner", "mechanic": "isolation", "force": "pull", "equipment": "other",
-    "primaryMuscles": ["hamstrings"], "secondaryMuscles": ["glutes"],
-    "requires": ["slider_surface"], "load": null, "pattern": "hinge", "unilateral": false,
+    "id": "custom_slider_leg_curl",
+    "custom": true,
+    "core": true,
+    "name": "Curl femoral lliscant amb drap",
+    "nameEn": "Slider Leg Curl",
+    "category": "strength",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "pull",
+    "equipment": "other",
+    "primaryMuscles": [
+      "hamstrings"
+    ],
+    "secondaryMuscles": [
+      "glutes"
+    ],
+    "requires": [
+      "slider_surface"
+    ],
+    "load": null,
+    "pattern": "hinge",
+    "unilateral": false,
     "substituteFor": "Lying_Leg_Curls",
-    "instructions": ["Estirat d'esquena amb els talons sobre un drap en terra llis.", "Puja el maluc en pont.", "Estira les cames lliscant i torna a portar els talons cap al cul sense baixar el maluc."]
+    "instructions": [
+      "Estirat d'esquena amb els talons sobre un drap en terra llis.",
+      "Puja el maluc en pont.",
+      "Estira les cames lliscant i torna a portar els talons cap al cul sense baixar el maluc."
+    ]
   },
   {
-    "id": "custom_slider_body_saw", "custom": true,
-    "name": "Body saw amb drap", "nameEn": "Slider Body Saw",
-    "category": "strength", "level": "intermediate", "mechanic": "compound", "force": "static", "equipment": "other",
-    "primaryMuscles": ["abdominals"], "secondaryMuscles": ["shoulders"],
-    "requires": ["slider_surface"], "load": null, "pattern": "iso:abs", "unilateral": false,
-    "instructions": ["Planxa sobre els avantbraços amb els peus sobre un drap.", "Llisca el cos enrere i endavant movent-te des de les espatlles.", "Mantén el maluc alineat."]
+    "id": "custom_slider_body_saw",
+    "custom": true,
+    "name": "Body saw amb drap",
+    "nameEn": "Slider Body Saw",
+    "category": "strength",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "static",
+    "equipment": "other",
+    "primaryMuscles": [
+      "abdominals"
+    ],
+    "secondaryMuscles": [
+      "shoulders"
+    ],
+    "requires": [
+      "slider_surface"
+    ],
+    "load": null,
+    "pattern": "iso:abs",
+    "unilateral": false,
+    "instructions": [
+      "Planxa sobre els avantbraços amb els peus sobre un drap.",
+      "Llisca el cos enrere i endavant movent-te des de les espatlles.",
+      "Mantén el maluc alineat."
+    ]
   },
   {
-    "id": "custom_slider_mountain_climbers", "custom": true,
-    "name": "Escaladors lliscants", "nameEn": "Slider Mountain Climbers",
-    "category": "strength", "level": "beginner", "mechanic": "compound", "force": "push", "equipment": "other",
-    "primaryMuscles": ["abdominals"], "secondaryMuscles": ["quadriceps", "shoulders"],
-    "requires": ["slider_surface"], "load": null, "pattern": "iso:abs", "unilateral": true, "seconds": 30,
-    "instructions": ["Posició de flexió amb els peus sobre drap.", "Porta els genolls al pit alternant sense saltar."]
+    "id": "custom_slider_mountain_climbers",
+    "custom": true,
+    "name": "Escaladors lliscants",
+    "nameEn": "Slider Mountain Climbers",
+    "category": "strength",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "push",
+    "equipment": "other",
+    "primaryMuscles": [
+      "abdominals"
+    ],
+    "secondaryMuscles": [
+      "quadriceps",
+      "shoulders"
+    ],
+    "requires": [
+      "slider_surface"
+    ],
+    "load": null,
+    "pattern": "iso:abs",
+    "unilateral": true,
+    "seconds": 30,
+    "instructions": [
+      "Posició de flexió amb els peus sobre drap.",
+      "Porta els genolls al pit alternant sense saltar."
+    ]
   },
   {
-    "id": "custom_slider_reverse_lunge", "custom": true,
-    "name": "Gambada enrere lliscant", "nameEn": "Slider Reverse Lunge",
-    "category": "strength", "level": "beginner", "mechanic": "compound", "force": "push", "equipment": "other",
-    "primaryMuscles": ["quadriceps"], "secondaryMuscles": ["glutes", "hamstrings"],
-    "requires": ["slider_surface"], "load": null, "pattern": "lunge", "unilateral": true,
-    "instructions": ["Un peu sobre el drap.", "Llisca'l enrere fins a fer una gambada.", "Torna empenyent amb la cama de davant."]
+    "id": "custom_slider_reverse_lunge",
+    "custom": true,
+    "name": "Gambada enrere lliscant",
+    "nameEn": "Slider Reverse Lunge",
+    "category": "strength",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "push",
+    "equipment": "other",
+    "primaryMuscles": [
+      "quadriceps"
+    ],
+    "secondaryMuscles": [
+      "glutes",
+      "hamstrings"
+    ],
+    "requires": [
+      "slider_surface"
+    ],
+    "load": null,
+    "pattern": "lunge",
+    "unilateral": true,
+    "instructions": [
+      "Un peu sobre el drap.",
+      "Llisca'l enrere fins a fer una gambada.",
+      "Torna empenyent amb la cama de davant."
+    ]
   },
   {
-    "id": "custom_sofa_nordic", "custom": true, "core": true,
-    "name": "Nòrdics amb els peus sota el sofà", "nameEn": "Sofa Nordic Curl",
-    "category": "strength", "level": "intermediate", "mechanic": "isolation", "force": "pull", "equipment": "other",
-    "primaryMuscles": ["hamstrings"], "secondaryMuscles": ["glutes"],
-    "requires": ["foot_anchor"], "load": null, "pattern": "hinge", "unilateral": false,
-    "instructions": ["De genolls sobre un coixí, talons sota el sofà.", "Cos recte, deixa't caure endavant tan lent com puguis.", "Para la caiguda amb les mans i torna a dalt ajudant-te el mínim."],
-    "limitations": ["knee"]
+    "id": "custom_sofa_nordic",
+    "custom": true,
+    "core": true,
+    "name": "Nòrdics amb els peus sota el sofà",
+    "nameEn": "Sofa Nordic Curl",
+    "category": "strength",
+    "level": "intermediate",
+    "mechanic": "isolation",
+    "force": "pull",
+    "equipment": "other",
+    "primaryMuscles": [
+      "hamstrings"
+    ],
+    "secondaryMuscles": [
+      "glutes"
+    ],
+    "requires": [
+      "foot_anchor"
+    ],
+    "load": null,
+    "pattern": "hinge",
+    "unilateral": false,
+    "instructions": [
+      "De genolls sobre un coixí, talons sota el sofà.",
+      "Cos recte, deixa't caure endavant tan lent com puguis.",
+      "Para la caiguda amb les mans i torna a dalt ajudant-te el mínim."
+    ],
+    "limitations": [
+      "knee"
+    ]
   },
   {
-    "id": "custom_chair_decline_pushup", "custom": true, "core": true,
-    "name": "Flexions declinades amb peus a la cadira", "nameEn": "Chair Decline Push-Up",
-    "category": "strength", "level": "intermediate", "mechanic": "compound", "force": "push", "equipment": "other",
-    "primaryMuscles": ["chest"], "secondaryMuscles": ["shoulders", "triceps"], "secondaryTargets": ["front-delts", "triceps"],
-    "requires": ["box_or_step"], "load": null, "pattern": "horizontal_push", "unilateral": false,
-    "instructions": ["Peus sobre una cadira robusta, mans a terra.", "Baixa el pit controlant.", "Empeny fins a dalt amb el cos recte."],
-    "limitations": ["wrist"]
+    "id": "custom_chair_decline_pushup",
+    "custom": true,
+    "core": true,
+    "name": "Flexions declinades amb peus a la cadira",
+    "nameEn": "Chair Decline Push-Up",
+    "category": "strength",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "push",
+    "equipment": "other",
+    "primaryMuscles": [
+      "chest"
+    ],
+    "secondaryMuscles": [
+      "shoulders",
+      "triceps"
+    ],
+    "secondaryTargets": [
+      "front-delts",
+      "triceps"
+    ],
+    "requires": [
+      "box_or_step"
+    ],
+    "load": null,
+    "pattern": "horizontal_push",
+    "unilateral": false,
+    "instructions": [
+      "Peus sobre una cadira robusta, mans a terra.",
+      "Baixa el pit controlant.",
+      "Empeny fins a dalt amb el cos recte."
+    ],
+    "limitations": [
+      "wrist"
+    ]
   },
   {
-    "id": "custom_chair_triceps_dip", "custom": true, "core": true,
-    "name": "Fons de tríceps a la cadira", "nameEn": "Chair Triceps Dips",
-    "category": "strength", "level": "beginner", "mechanic": "compound", "force": "push", "equipment": "other",
-    "primaryMuscles": ["triceps"], "secondaryMuscles": ["chest", "shoulders"],
-    "requires": [["chair", "bench_flat"]], "load": null, "pattern": "iso:triceps", "unilateral": false,
+    "id": "custom_chair_triceps_dip",
+    "custom": true,
+    "core": true,
+    "name": "Fons de tríceps a la cadira",
+    "nameEn": "Chair Triceps Dips",
+    "category": "strength",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "push",
+    "equipment": "other",
+    "primaryMuscles": [
+      "triceps"
+    ],
+    "secondaryMuscles": [
+      "chest",
+      "shoulders"
+    ],
+    "requires": [
+      [
+        "chair",
+        "bench_flat"
+      ]
+    ],
+    "load": null,
+    "pattern": "iso:triceps",
+    "unilateral": false,
     "substituteFor": "Bench_Dips",
-    "instructions": ["Mans a la vora de la cadira, darrere teu.", "Cames estirades o flexionades (més fàcil).", "Baixa fins que els colzes facin 90° i puja."],
-    "limitations": ["shoulder", "elbow"], "safety": "Cadira contra la paret."
+    "instructions": [
+      "Mans a la vora de la cadira, darrere teu.",
+      "Cames estirades o flexionades (més fàcil).",
+      "Baixa fins que els colzes facin 90° i puja."
+    ],
+    "limitations": [
+      "shoulder",
+      "elbow"
+    ],
+    "safety": "Cadira contra la paret."
   },
   {
-    "id": "custom_chair_step_up", "custom": true, "core": true,
-    "name": "Step-up a la cadira o esglaó", "nameEn": "Chair Step-Up",
-    "category": "strength", "level": "beginner", "mechanic": "compound", "force": "push", "equipment": "other",
-    "primaryMuscles": ["quadriceps"], "secondaryMuscles": ["glutes", "hamstrings"],
-    "requires": ["box_or_step"], "load": null, "pattern": "lunge", "unilateral": true,
-    "instructions": ["Posa un peu sencer a la cadira o esglaó.", "Puja empenyent només amb aquesta cama.", "Baixa lent i repeteix."],
-    "limitations": ["knee"]
+    "id": "custom_chair_step_up",
+    "custom": true,
+    "core": true,
+    "name": "Step-up a la cadira o esglaó",
+    "nameEn": "Chair Step-Up",
+    "category": "strength",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "push",
+    "equipment": "other",
+    "primaryMuscles": [
+      "quadriceps"
+    ],
+    "secondaryMuscles": [
+      "glutes",
+      "hamstrings"
+    ],
+    "requires": [
+      "box_or_step"
+    ],
+    "load": null,
+    "pattern": "lunge",
+    "unilateral": true,
+    "instructions": [
+      "Posa un peu sencer a la cadira o esglaó.",
+      "Puja empenyent només amb aquesta cama.",
+      "Baixa lent i repeteix."
+    ],
+    "limitations": [
+      "knee"
+    ]
   },
   {
-    "id": "custom_single_leg_calf_raise_step", "custom": true, "core": true,
-    "name": "Elevació de bessons a una cama a l'esglaó", "nameEn": "Single-Leg Calf Raise on Step",
-    "category": "strength", "level": "beginner", "mechanic": "isolation", "force": "push", "equipment": "other",
-    "primaryMuscles": ["calves"], "secondaryMuscles": [],
-    "requires": ["box_or_step"], "load": null, "pattern": "iso:calves", "unilateral": true,
-    "instructions": ["Puntera d'un peu a la vora de l'esglaó, recolza't a la paret.", "Baixa el taló del tot i puja tan amunt com puguis.", "Aguanta 1 s a dalt."]
+    "id": "custom_single_leg_calf_raise_step",
+    "custom": true,
+    "core": true,
+    "name": "Elevació de bessons a una cama a l'esglaó",
+    "nameEn": "Single-Leg Calf Raise on Step",
+    "category": "strength",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "push",
+    "equipment": "other",
+    "primaryMuscles": [
+      "calves"
+    ],
+    "secondaryMuscles": [],
+    "requires": [
+      "box_or_step"
+    ],
+    "load": null,
+    "pattern": "iso:calves",
+    "unilateral": true,
+    "instructions": [
+      "Puntera d'un peu a la vora de l'esglaó, recolza't a la paret.",
+      "Baixa el taló del tot i puja tan amunt com puguis.",
+      "Aguanta 1 s a dalt."
+    ]
   },
   {
-    "id": "custom_wall_sit", "custom": true, "core": true,
-    "name": "Cadira a la paret (wall sit)", "nameEn": "Wall Sit",
-    "category": "strength", "level": "beginner", "mechanic": "isolation", "force": "static", "equipment": "other",
-    "primaryMuscles": ["quadriceps"], "secondaryMuscles": ["glutes"],
-    "requires": ["wall"], "load": null, "pattern": "iso:quads", "unilateral": false, "seconds": 45,
-    "instructions": ["Esquena a la paret, baixa fins que els genolls facin 90°.", "Aguanta el temps indicat."]
+    "id": "custom_wall_sit",
+    "custom": true,
+    "core": true,
+    "name": "Cadira a la paret (wall sit)",
+    "nameEn": "Wall Sit",
+    "category": "strength",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "static",
+    "equipment": "other",
+    "primaryMuscles": [
+      "quadriceps"
+    ],
+    "secondaryMuscles": [
+      "glutes"
+    ],
+    "requires": [
+      "wall"
+    ],
+    "load": null,
+    "pattern": "iso:quads",
+    "unilateral": false,
+    "seconds": 45,
+    "instructions": [
+      "Esquena a la paret, baixa fins que els genolls facin 90°.",
+      "Aguanta el temps indicat."
+    ]
   },
   {
-    "id": "custom_pike_pushup", "custom": true, "core": true,
-    "name": "Flexions pike", "nameEn": "Pike Push-Up",
-    "category": "strength", "level": "beginner", "mechanic": "compound", "force": "push", "equipment": "other",
-    "primaryMuscles": ["shoulders"], "primaryTargets": ["front-delts"], "secondaryMuscles": ["triceps"],
-    "requires": [], "load": null, "pattern": "vertical_push", "unilateral": false,
-    "instructions": ["Posició de V invertida, maluc ben amunt.", "Baixa el cap entre les mans doblegant els colzes.", "Empeny fins a dalt."],
-    "limitations": ["shoulder", "wrist"]
+    "id": "custom_pike_pushup",
+    "custom": true,
+    "core": true,
+    "name": "Flexions pike",
+    "nameEn": "Pike Push-Up",
+    "category": "strength",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "push",
+    "equipment": "other",
+    "primaryMuscles": [
+      "shoulders"
+    ],
+    "primaryTargets": [
+      "front-delts"
+    ],
+    "secondaryMuscles": [
+      "triceps"
+    ],
+    "requires": [],
+    "load": null,
+    "pattern": "vertical_push",
+    "unilateral": false,
+    "instructions": [
+      "Posició de V invertida, maluc ben amunt.",
+      "Baixa el cap entre les mans doblegant els colzes.",
+      "Empeny fins a dalt."
+    ],
+    "limitations": [
+      "shoulder",
+      "wrist"
+    ]
   },
   {
-    "id": "custom_wall_handstand_hold", "custom": true,
-    "name": "Pino recolzat a la paret", "nameEn": "Wall Handstand Hold",
-    "category": "strength", "level": "intermediate", "mechanic": "compound", "force": "static", "equipment": "other",
-    "primaryMuscles": ["shoulders"], "primaryTargets": ["front-delts"], "secondaryMuscles": ["triceps", "abdominals"],
-    "requires": ["wall"], "load": null, "pattern": "vertical_push", "unilateral": false, "seconds": 30,
-    "instructions": ["Mans a uns 20 cm de la paret, puja els peus a la paret.", "Braços bloquejats i cos recte.", "Aguanta el temps indicat i baixa amb control."],
-    "limitations": ["shoulder", "wrist"]
+    "id": "custom_wall_handstand_hold",
+    "custom": true,
+    "name": "Pino recolzat a la paret",
+    "nameEn": "Wall Handstand Hold",
+    "category": "strength",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "static",
+    "equipment": "other",
+    "primaryMuscles": [
+      "shoulders"
+    ],
+    "primaryTargets": [
+      "front-delts"
+    ],
+    "secondaryMuscles": [
+      "triceps",
+      "abdominals"
+    ],
+    "requires": [
+      "wall"
+    ],
+    "load": null,
+    "pattern": "vertical_push",
+    "unilateral": false,
+    "seconds": 30,
+    "instructions": [
+      "Mans a uns 20 cm de la paret, puja els peus a la paret.",
+      "Braços bloquejats i cos recte.",
+      "Aguanta el temps indicat i baixa amb control."
+    ],
+    "limitations": [
+      "shoulder",
+      "wrist"
+    ]
   },
   {
-    "id": "custom_tire_flip_home", "custom": true,
-    "name": "Bolcar pneumàtic", "nameEn": "Tire Flip (home)",
-    "category": "strength", "level": "intermediate", "mechanic": "compound", "force": "push", "equipment": "other",
-    "primaryMuscles": ["quadriceps"], "secondaryMuscles": ["glutes", "hamstrings", "lower back", "chest"],
-    "requires": ["tire"], "load": null, "pattern": "hinge", "unilateral": false, "flags": { "ballistic": true },
-    "instructions": ["Dits sota el pneumàtic, pit contra la goma.", "Empeny amb les cames cap endavant i amunt.", "Quan estigui a mitja alçada, gira les mans i empeny fins a bolcar-lo."],
-    "limitations": ["lowerBack"]
+    "id": "custom_tire_flip_home",
+    "custom": true,
+    "name": "Bolcar pneumàtic",
+    "nameEn": "Tire Flip (home)",
+    "category": "strength",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "push",
+    "equipment": "other",
+    "primaryMuscles": [
+      "quadriceps"
+    ],
+    "secondaryMuscles": [
+      "glutes",
+      "hamstrings",
+      "lower back",
+      "chest"
+    ],
+    "requires": [
+      "tire"
+    ],
+    "load": null,
+    "pattern": "hinge",
+    "unilateral": false,
+    "flags": {
+      "ballistic": true
+    },
+    "instructions": [
+      "Dits sota el pneumàtic, pit contra la goma.",
+      "Empeny amb les cames cap endavant i amunt.",
+      "Quan estigui a mitja alçada, gira les mans i empeny fins a bolcar-lo."
+    ],
+    "limitations": [
+      "lowerBack"
+    ]
   },
   {
-    "id": "custom_sledgehammer_tire", "custom": true,
-    "name": "Cops de mall al pneumàtic", "nameEn": "Sledgehammer Tire Strikes",
-    "category": "plyometrics", "level": "beginner", "mechanic": "compound", "force": "pull", "equipment": "other",
-    "primaryMuscles": ["abdominals"], "primaryTargets": ["obliques"], "secondaryMuscles": ["shoulders", "lats", "forearms"],
-    "requires": ["sledgehammer", "tire"], "load": null, "pattern": "iso:obliques", "unilateral": false, "seconds": 30,
-    "flags": { "ballistic": true, "jump": false },
-    "instructions": ["Peus a l'amplada de les espatlles davant del pneumàtic.", "Puja el mall per sobre l'espatlla i colpeja el pneumàtic.", "Alterna el costat cada repetició."]
+    "id": "custom_sledgehammer_tire",
+    "custom": true,
+    "name": "Cops de mall al pneumàtic",
+    "nameEn": "Sledgehammer Tire Strikes",
+    "category": "plyometrics",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "pull",
+    "equipment": "other",
+    "primaryMuscles": [
+      "abdominals"
+    ],
+    "primaryTargets": [
+      "obliques"
+    ],
+    "secondaryMuscles": [
+      "shoulders",
+      "lats",
+      "forearms"
+    ],
+    "requires": [
+      "sledgehammer",
+      "tire"
+    ],
+    "load": null,
+    "pattern": "iso:obliques",
+    "unilateral": false,
+    "seconds": 30,
+    "flags": {
+      "ballistic": true,
+      "jump": false
+    },
+    "instructions": [
+      "Peus a l'amplada de les espatlles davant del pneumàtic.",
+      "Puja el mall per sobre l'espatlla i colpeja el pneumàtic.",
+      "Alterna el costat cada repetició."
+    ]
   },
   {
-    "id": "custom_tire_drag", "custom": true,
-    "name": "Arrossegar pneumàtic amb corda (trineu casolà)", "nameEn": "Tire Drag with Rope",
-    "category": "strength", "level": "beginner", "mechanic": "compound", "force": "pull", "equipment": "other",
-    "primaryMuscles": ["quadriceps"], "secondaryMuscles": ["glutes", "calves", "hamstrings"],
-    "requires": ["tire", "battle_rope", "run_space"], "load": null, "pattern": "carry", "unilateral": false, "seconds": 30,
+    "id": "custom_tire_drag",
+    "custom": true,
+    "name": "Arrossegar pneumàtic amb corda (trineu casolà)",
+    "nameEn": "Tire Drag with Rope",
+    "category": "strength",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "pull",
+    "equipment": "other",
+    "primaryMuscles": [
+      "quadriceps"
+    ],
+    "secondaryMuscles": [
+      "glutes",
+      "calves",
+      "hamstrings"
+    ],
+    "requires": [
+      "tire",
+      "battle_rope",
+      "run_space"
+    ],
+    "load": null,
+    "pattern": "carry",
+    "unilateral": false,
+    "seconds": 30,
     "substituteFor": "Sled_Push",
-    "instructions": ["Lliga la corda al pneumàtic.", "Camina o corre endavant inclinat, empenyent fort amb les cames."]
+    "instructions": [
+      "Lliga la corda al pneumàtic.",
+      "Camina o corre endavant inclinat, empenyent fort amb les cames."
+    ]
   },
   {
-    "id": "custom_rope_waves_tree", "custom": true,
-    "name": "Ones amb corda gruixuda lligada a un arbre", "nameEn": "Battle Rope Waves (tree)",
-    "category": "strength", "level": "beginner", "mechanic": "compound", "force": "push", "equipment": "other",
-    "primaryMuscles": ["shoulders"], "primaryTargets": ["front-delts"], "secondaryMuscles": ["abdominals", "forearms"],
-    "requires": ["battle_rope"], "load": null, "pattern": "iso:front-delts", "unilateral": false, "seconds": 30,
+    "id": "custom_rope_waves_tree",
+    "custom": true,
+    "name": "Ones amb corda gruixuda lligada a un arbre",
+    "nameEn": "Battle Rope Waves (tree)",
+    "category": "strength",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "push",
+    "equipment": "other",
+    "primaryMuscles": [
+      "shoulders"
+    ],
+    "primaryTargets": [
+      "front-delts"
+    ],
+    "secondaryMuscles": [
+      "abdominals",
+      "forearms"
+    ],
+    "requires": [
+      "battle_rope"
+    ],
+    "load": null,
+    "pattern": "iso:front-delts",
+    "unilateral": false,
+    "seconds": 30,
     "substituteFor": "Battling_Ropes",
-    "instructions": ["Lliga el centre de la corda a un arbre o columna.", "Mitja flexió de cames, un extrem a cada mà.", "Fes ones alternes ràpides i constants."]
+    "instructions": [
+      "Lliga el centre de la corda a un arbre o columna.",
+      "Mitja flexió de cames, un extrem a cada mà.",
+      "Fes ones alternes ràpides i constants."
+    ]
   },
   {
-    "id": "custom_pallet_box_jump", "custom": true,
-    "name": "Salts a una plataforma de palets", "nameEn": "Pallet Box Jump",
-    "category": "plyometrics", "level": "beginner", "mechanic": "compound", "force": "push", "equipment": "other",
-    "primaryMuscles": ["quadriceps"], "secondaryMuscles": ["glutes", "calves", "hamstrings"],
-    "requires": [["pallets", "plyo_box"]], "load": null, "pattern": "squat", "unilateral": false, "flags": { "jump": true },
-    "instructions": ["Davant dels palets, peus a l'amplada del maluc.", "Salta amb els braços i aterra suau amb tot el peu.", "Baixa caminant, no saltant."],
+    "id": "custom_pallet_box_jump",
+    "custom": true,
+    "name": "Salts a una plataforma de palets",
+    "nameEn": "Pallet Box Jump",
+    "category": "plyometrics",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "push",
+    "equipment": "other",
+    "primaryMuscles": [
+      "quadriceps"
+    ],
+    "secondaryMuscles": [
+      "glutes",
+      "calves",
+      "hamstrings"
+    ],
+    "requires": [
+      [
+        "pallets",
+        "plyo_box"
+      ]
+    ],
+    "load": null,
+    "pattern": "squat",
+    "unilateral": false,
+    "flags": {
+      "jump": true
+    },
+    "instructions": [
+      "Davant dels palets, peus a l'amplada del maluc.",
+      "Salta amb els braços i aterra suau amb tot el peu.",
+      "Baixa caminant, no saltant."
+    ],
     "safety": "Palets ben fixats i estables."
   },
   {
-    "id": "custom_bench_press_test_pace", "custom": true, "core": true, "agentRural": true,
-    "name": "Press de banca a ritme de prova (40 kg)", "nameEn": "Bench Press Test Pace 40 kg",
-    "category": "strength", "level": "beginner", "mechanic": "compound", "force": "push", "equipment": "barbell",
-    "primaryMuscles": ["chest"], "secondaryMuscles": ["triceps", "shoulders"],
-    "requires": ["barbell", "plates", "bench_flat", "rack"], "load": { "cap": "barbell", "pair": false }, "fixedLoadKg": 40,
-    "pattern": "horizontal_push", "unilateral": false,
-    "instructions": ["Barra de 40 kg muntada.", "Una repetició cada ~1,6 s (≈ 28 reps en 45 s): segueix el metrònom.", "Recorregut complet: la barra toca el pit i bloqueja els colzes a dalt."]
+    "id": "custom_bench_press_test_pace",
+    "custom": true,
+    "core": true,
+    "agentRural": true,
+    "name": "Press de banca a ritme de prova (40 kg)",
+    "nameEn": "Bench Press Test Pace 40 kg",
+    "category": "strength",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "push",
+    "equipment": "barbell",
+    "primaryMuscles": [
+      "chest"
+    ],
+    "secondaryMuscles": [
+      "triceps",
+      "shoulders"
+    ],
+    "requires": [
+      "barbell",
+      "plates",
+      "bench_flat",
+      "rack"
+    ],
+    "load": {
+      "cap": "barbell",
+      "pair": false
+    },
+    "fixedLoadKg": 40,
+    "pattern": "horizontal_push",
+    "unilateral": false,
+    "instructions": [
+      "Barra de 40 kg muntada.",
+      "Una repetició cada ~1,6 s (≈ 28 reps en 45 s): segueix el metrònom.",
+      "Recorregut complet: la barra toca el pit i bloqueja els colzes a dalt."
+    ]
   },
   {
-    "id": "custom_bench_press_emom_40", "custom": true, "core": true, "agentRural": true,
-    "name": "Press de banca EMOM 40 kg", "nameEn": "Bench Press EMOM 40 kg",
-    "category": "strength", "level": "beginner", "mechanic": "compound", "force": "push", "equipment": "barbell",
-    "primaryMuscles": ["chest"], "secondaryMuscles": ["triceps", "shoulders"],
-    "requires": ["barbell", "plates", "bench_flat", "rack"], "load": { "cap": "barbell", "pair": false }, "fixedLoadKg": 40,
-    "pattern": "horizontal_push", "unilateral": false, "emom": true,
-    "instructions": ["Cada minut, a l'inici del minut, fes les repeticions indicades amb 40 kg.", "Descansa el que quedi del minut."]
+    "id": "custom_bench_press_emom_40",
+    "custom": true,
+    "core": true,
+    "agentRural": true,
+    "name": "Press de banca EMOM 40 kg",
+    "nameEn": "Bench Press EMOM 40 kg",
+    "category": "strength",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "push",
+    "equipment": "barbell",
+    "primaryMuscles": [
+      "chest"
+    ],
+    "secondaryMuscles": [
+      "triceps",
+      "shoulders"
+    ],
+    "requires": [
+      "barbell",
+      "plates",
+      "bench_flat",
+      "rack"
+    ],
+    "load": {
+      "cap": "barbell",
+      "pair": false
+    },
+    "fixedLoadKg": 40,
+    "pattern": "horizontal_push",
+    "unilateral": false,
+    "emom": true,
+    "instructions": [
+      "Cada minut, a l'inici del minut, fes les repeticions indicades amb 40 kg.",
+      "Descansa el que quedi del minut."
+    ]
   },
   {
-    "id": "custom_bench_press_test_45s", "custom": true, "agentRural": true, "isTest": true,
-    "name": "Test de press de banca: màximes reps a 40 kg en 45 s", "nameEn": "Bench Press Test 40 kg 45 s",
-    "category": "strength", "level": "beginner", "mechanic": "compound", "force": "push", "equipment": "barbell",
-    "primaryMuscles": ["chest"], "secondaryMuscles": ["triceps", "shoulders"],
-    "requires": ["barbell", "plates", "bench_flat", "rack"], "load": { "cap": "barbell", "pair": false }, "fixedLoadKg": 40,
-    "pattern": "horizontal_push", "unilateral": false, "seconds": 45,
-    "instructions": ["Escalfa bé abans.", "Màximes repeticions vàlides amb 40 kg en 45 s.", "Apunta el resultat: és el teu test."]
+    "id": "custom_bench_press_test_45s",
+    "custom": true,
+    "agentRural": true,
+    "isTest": true,
+    "name": "Test de press de banca: màximes reps a 40 kg en 45 s",
+    "nameEn": "Bench Press Test 40 kg 45 s",
+    "category": "strength",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "push",
+    "equipment": "barbell",
+    "primaryMuscles": [
+      "chest"
+    ],
+    "secondaryMuscles": [
+      "triceps",
+      "shoulders"
+    ],
+    "requires": [
+      "barbell",
+      "plates",
+      "bench_flat",
+      "rack"
+    ],
+    "load": {
+      "cap": "barbell",
+      "pair": false
+    },
+    "fixedLoadKg": 40,
+    "pattern": "horizontal_push",
+    "unilateral": false,
+    "seconds": 45,
+    "instructions": [
+      "Escalfa bé abans.",
+      "Màximes repeticions vàlides amb 40 kg en 45 s.",
+      "Apunta el resultat: és el teu test."
+    ]
   },
   {
-    "id": "custom_hurdle_jumps", "custom": true, "agentRural": true,
-    "name": "Salts de tanca amb peus junts", "nameEn": "Two-Foot Hurdle Jumps",
-    "category": "plyometrics", "level": "beginner", "mechanic": "compound", "force": "push", "equipment": "other",
-    "primaryMuscles": ["quadriceps"], "secondaryMuscles": ["calves", "glutes", "hamstrings"],
-    "requires": ["hurdles"], "load": null, "pattern": "squat", "unilateral": false, "flags": { "jump": true },
-    "instructions": ["Peus junts davant de la tanca.", "Salta recollint els genolls i aterra suau.", "Progressa en alçada fins a 90 cm."]
+    "id": "custom_hurdle_jumps",
+    "custom": true,
+    "agentRural": true,
+    "name": "Salts de tanca amb peus junts",
+    "nameEn": "Two-Foot Hurdle Jumps",
+    "category": "plyometrics",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "push",
+    "equipment": "other",
+    "primaryMuscles": [
+      "quadriceps"
+    ],
+    "secondaryMuscles": [
+      "calves",
+      "glutes",
+      "hamstrings"
+    ],
+    "requires": [
+      "hurdles"
+    ],
+    "load": null,
+    "pattern": "squat",
+    "unilateral": false,
+    "flags": {
+      "jump": true
+    },
+    "instructions": [
+      "Peus junts davant de la tanca.",
+      "Salta recollint els genolls i aterra suau.",
+      "Progressa en alçada fins a 90 cm."
+    ]
   },
   {
-    "id": "custom_hurdle_duck_walk", "custom": true, "agentRural": true,
-    "name": "Pas per sota de tanca (duck walk)", "nameEn": "Hurdle Duck Walk Under",
-    "category": "stretching", "level": "beginner", "mechanic": "compound", "force": "static", "equipment": "other",
-    "primaryMuscles": ["adductors"], "secondaryMuscles": ["glutes", "quadriceps"],
-    "requires": ["hurdles"], "load": null, "pattern": "mobility", "unilateral": false,
-    "instructions": ["Passa per sota de la tanca sense tocar-la, amb el maluc baix.", "Mantén el pit amunt."]
+    "id": "custom_hurdle_duck_walk",
+    "custom": true,
+    "agentRural": true,
+    "name": "Pas per sota de tanca (duck walk)",
+    "nameEn": "Hurdle Duck Walk Under",
+    "category": "stretching",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "static",
+    "equipment": "other",
+    "primaryMuscles": [
+      "adductors"
+    ],
+    "secondaryMuscles": [
+      "glutes",
+      "quadriceps"
+    ],
+    "requires": [
+      "hurdles"
+    ],
+    "load": null,
+    "pattern": "mobility",
+    "unilateral": false,
+    "instructions": [
+      "Passa per sota de la tanca sense tocar-la, amb el maluc baix.",
+      "Mantén el pit amunt."
+    ]
   },
   {
-    "id": "custom_forward_roll_mat", "custom": true, "agentRural": true,
-    "name": "Tombarella endavant al matalàs", "nameEn": "Forward Roll on Mat",
-    "category": "stretching", "level": "beginner", "mechanic": "compound", "force": "static", "equipment": "other",
-    "primaryMuscles": ["abdominals"], "secondaryMuscles": ["neck"],
-    "requires": ["mat"], "load": null, "pattern": "mobility", "unilateral": false,
-    "instructions": ["Mans a terra a l'amplada de les espatlles.", "Barbeta al pit i roda sobre l'esquena, no sobre el cap.", "Acaba dret sense ajudar-te amb les mans si pots."],
-    "limitations": ["neck"]
+    "id": "custom_forward_roll_mat",
+    "custom": true,
+    "agentRural": true,
+    "name": "Tombarella endavant al matalàs",
+    "nameEn": "Forward Roll on Mat",
+    "category": "stretching",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "static",
+    "equipment": "other",
+    "primaryMuscles": [
+      "abdominals"
+    ],
+    "secondaryMuscles": [
+      "neck"
+    ],
+    "requires": [
+      "mat"
+    ],
+    "load": null,
+    "pattern": "mobility",
+    "unilateral": false,
+    "instructions": [
+      "Mans a terra a l'amplada de les espatlles.",
+      "Barbeta al pit i roda sobre l'esquena, no sobre el cap.",
+      "Acaba dret sense ajudar-te amb les mans si pots."
+    ],
+    "limitations": [
+      "neck"
+    ]
   },
   {
-    "id": "custom_shuttle_sprints", "custom": true, "agentRural": true,
-    "name": "Sprints curts de 5–10 m amb canvis de direcció", "nameEn": "Short Shuttle Sprints",
-    "category": "plyometrics", "level": "beginner", "mechanic": "compound", "force": "push", "equipment": "other",
-    "primaryMuscles": ["quadriceps"], "secondaryMuscles": ["hamstrings", "calves", "glutes"],
-    "requires": ["run_space"], "load": null, "pattern": "sprint", "unilateral": false, "flags": { "jump": false },
-    "instructions": ["Marca dues línies a 5–10 m.", "Esprinta, toca la línia amb la mà i torna.", "Descansa del tot entre repeticions."]
+    "id": "custom_shuttle_sprints",
+    "custom": true,
+    "agentRural": true,
+    "name": "Sprints curts de 5–10 m amb canvis de direcció",
+    "nameEn": "Short Shuttle Sprints",
+    "category": "plyometrics",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "push",
+    "equipment": "other",
+    "primaryMuscles": [
+      "quadriceps"
+    ],
+    "secondaryMuscles": [
+      "hamstrings",
+      "calves",
+      "glutes"
+    ],
+    "requires": [
+      "run_space"
+    ],
+    "load": null,
+    "pattern": "sprint",
+    "unilateral": false,
+    "flags": {
+      "jump": false
+    },
+    "instructions": [
+      "Marca dues línies a 5–10 m.",
+      "Esprinta, toca la línia amb la mà i torna.",
+      "Descansa del tot entre repeticions."
+    ]
   },
   {
-    "id": "custom_backpack_front_squat", "custom": true, "core": true,
-    "name": "Esquat amb motxilla al davant", "nameEn": "Backpack Front Squat",
-    "category": "strength", "level": "beginner", "mechanic": "compound", "force": "push", "equipment": "other",
-    "primaryMuscles": ["quadriceps"], "secondaryMuscles": ["glutes", "abdominals"],
-    "requires": ["backpack"], "load": { "cap": "backpack", "pair": false }, "pattern": "squat", "unilateral": false,
-    "instructions": ["Abraça la motxilla carregada contra el pit.", "Baixa en esquat amb el tronc dret.", "Puja empenyent amb tot el peu."]
+    "id": "custom_backpack_front_squat",
+    "custom": true,
+    "core": true,
+    "name": "Esquat amb motxilla al davant",
+    "nameEn": "Backpack Front Squat",
+    "category": "strength",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "push",
+    "equipment": "other",
+    "primaryMuscles": [
+      "quadriceps"
+    ],
+    "secondaryMuscles": [
+      "glutes",
+      "abdominals"
+    ],
+    "requires": [
+      "backpack"
+    ],
+    "load": {
+      "cap": "backpack",
+      "pair": false
+    },
+    "pattern": "squat",
+    "unilateral": false,
+    "instructions": [
+      "Abraça la motxilla carregada contra el pit.",
+      "Baixa en esquat amb el tronc dret.",
+      "Puja empenyent amb tot el peu."
+    ]
   },
   {
-    "id": "custom_jug_overhead_press", "custom": true,
-    "name": "Press d'espatlles a una mà amb garrafa", "nameEn": "Jug One-Arm Overhead Press",
-    "category": "strength", "level": "beginner", "mechanic": "compound", "force": "push", "equipment": "other",
-    "primaryMuscles": ["shoulders"], "primaryTargets": ["front-delts"], "secondaryMuscles": ["triceps"],
-    "requires": ["jug"], "load": { "cap": "jug", "pair": false }, "pattern": "vertical_push", "unilateral": true,
-    "instructions": ["Garrafa a l'alçada de l'espatlla agafada per la nansa.", "Empeny-la amunt fins a estirar el braç.", "Baixa controlant."],
-    "limitations": ["shoulder"]
+    "id": "custom_jug_overhead_press",
+    "custom": true,
+    "name": "Press d'espatlles a una mà amb garrafa",
+    "nameEn": "Jug One-Arm Overhead Press",
+    "category": "strength",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "push",
+    "equipment": "other",
+    "primaryMuscles": [
+      "shoulders"
+    ],
+    "primaryTargets": [
+      "front-delts"
+    ],
+    "secondaryMuscles": [
+      "triceps"
+    ],
+    "requires": [
+      "jug"
+    ],
+    "load": {
+      "cap": "jug",
+      "pair": false
+    },
+    "pattern": "vertical_push",
+    "unilateral": true,
+    "instructions": [
+      "Garrafa a l'alçada de l'espatlla agafada per la nansa.",
+      "Empeny-la amunt fins a estirar el braç.",
+      "Baixa controlant."
+    ],
+    "limitations": [
+      "shoulder"
+    ]
   },
   {
-    "id": "custom_jug_lateral_raise", "custom": true,
-    "name": "Elevació lateral amb ampolles o garrafes", "nameEn": "Jug Lateral Raise",
-    "category": "strength", "level": "beginner", "mechanic": "isolation", "force": "push", "equipment": "other",
-    "primaryMuscles": ["shoulders"], "primaryTargets": ["side-delts"], "secondaryMuscles": [],
-    "requires": ["jug"], "load": { "cap": "jug", "pair": true }, "pattern": "iso:side-delts", "unilateral": false,
-    "instructions": ["Una ampolla o garrafa petita a cada mà.", "Puja els braços pels costats fins a l'alçada de les espatlles.", "Baixa lent."]
+    "id": "custom_jug_lateral_raise",
+    "custom": true,
+    "name": "Elevació lateral amb ampolles o garrafes",
+    "nameEn": "Jug Lateral Raise",
+    "category": "strength",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "force": "push",
+    "equipment": "other",
+    "primaryMuscles": [
+      "shoulders"
+    ],
+    "primaryTargets": [
+      "side-delts"
+    ],
+    "secondaryMuscles": [],
+    "requires": [
+      "jug"
+    ],
+    "load": {
+      "cap": "jug",
+      "pair": true
+    },
+    "pattern": "iso:side-delts",
+    "unilateral": false,
+    "instructions": [
+      "Una ampolla o garrafa petita a cada mà.",
+      "Puja els braços pels costats fins a l'alçada de les espatlles.",
+      "Baixa lent."
+    ]
+  },
+  {
+    "id": "custom_pistol_squat",
+    "custom": true,
+    "core": true,
+    "name": "Esquat pistol (a una cama)",
+    "nameEn": "Pistol Squat",
+    "category": "strength",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "push",
+    "equipment": "body only",
+    "primaryMuscles": [
+      "quadriceps"
+    ],
+    "secondaryMuscles": [
+      "glutes",
+      "hamstrings",
+      "calves"
+    ],
+    "requires": [],
+    "load": null,
+    "pattern": "lunge",
+    "unilateral": true,
+    "instructions": [
+      "Dret sobre una cama, l'altra estirada endavant.",
+      "Baixa tan avall com puguis controlant, amb el taló a terra.",
+      "Puja sense recolzar l'altra cama. Si no arribes, agafa't a un marc de porta o baixa fins a una cadira."
+    ],
+    "limitations": [
+      "knee"
+    ]
+  },
+  {
+    "id": "custom_bw_bulgarian_split_squat",
+    "custom": true,
+    "core": true,
+    "name": "Esquat búlgar amb pes corporal",
+    "nameEn": "Bodyweight Bulgarian Split Squat",
+    "category": "strength",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "push",
+    "equipment": "body only",
+    "primaryMuscles": [
+      "quadriceps"
+    ],
+    "secondaryMuscles": [
+      "glutes",
+      "hamstrings"
+    ],
+    "requires": [
+      "box_or_step"
+    ],
+    "load": null,
+    "pattern": "lunge",
+    "unilateral": true,
+    "instructions": [
+      "Empenya del peu de darrere sobre un banc, cadira o esglaó.",
+      "Baixa fins que el genoll de darrere gairebé toqui a terra.",
+      "Puja amb la cama de davant. Fes totes les reps i canvia."
+    ]
+  },
+  {
+    "id": "custom_archer_pushup",
+    "custom": true,
+    "core": true,
+    "name": "Flexions arquer",
+    "nameEn": "Archer Push-Up",
+    "category": "strength",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "push",
+    "equipment": "body only",
+    "primaryMuscles": [
+      "chest"
+    ],
+    "secondaryMuscles": [
+      "triceps",
+      "shoulders"
+    ],
+    "secondaryTargets": [
+      "triceps",
+      "front-delts"
+    ],
+    "requires": [],
+    "load": null,
+    "pattern": "horizontal_push",
+    "unilateral": true,
+    "instructions": [
+      "Mans molt obertes.",
+      "Baixa cap a una mà mentre l'altre braç queda estirat.",
+      "Torna al centre i alterna el costat."
+    ],
+    "limitations": [
+      "wrist",
+      "shoulder"
+    ]
+  },
+  {
+    "id": "custom_l_sit",
+    "custom": true,
+    "name": "L-sit a les paral·leles",
+    "nameEn": "L-Sit Hold",
+    "category": "strength",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "static",
+    "equipment": "other",
+    "primaryMuscles": [
+      "abdominals"
+    ],
+    "secondaryMuscles": [
+      "triceps"
+    ],
+    "requires": [
+      [
+        "dip_station",
+        "parallettes"
+      ]
+    ],
+    "load": null,
+    "pattern": "iso:abs",
+    "unilateral": false,
+    "seconds": 20,
+    "instructions": [
+      "Braços bloquejats a les paral·leles o paralletes.",
+      "Puja les cames estirades fins a l'horitzontal.",
+      "Aguanta el temps indicat; si no arribes, genolls flexionats."
+    ]
+  },
+  {
+    "id": "custom_chinup_negative",
+    "custom": true,
+    "name": "Dominades excèntriques (baixada lenta 5 s)",
+    "nameEn": "Negative Pull-Up",
+    "category": "strength",
+    "level": "beginner",
+    "mechanic": "compound",
+    "force": "pull",
+    "equipment": "body only",
+    "primaryMuscles": [
+      "lats"
+    ],
+    "secondaryMuscles": [
+      "biceps",
+      "middle back"
+    ],
+    "requires": [
+      "pullup_bar"
+    ],
+    "load": null,
+    "pattern": "vertical_pull",
+    "unilateral": false,
+    "instructions": [
+      "Puja saltant o amb una cadira fins a tenir la barbeta per sobre la barra.",
+      "Baixa en 5 segons fins a braços estirats.",
+      "Repeteix."
+    ]
+  },
+  {
+    "id": "custom_jug_single_leg_hip_thrust",
+    "custom": true,
+    "core": true,
+    "name": "Hip thrust a una cama amb garrafa",
+    "nameEn": "Single-Leg Jug Hip Thrust",
+    "category": "strength",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "force": "push",
+    "equipment": "other",
+    "primaryMuscles": [
+      "glutes"
+    ],
+    "secondaryMuscles": [
+      "hamstrings"
+    ],
+    "requires": [
+      "jug",
+      "bench_flat"
+    ],
+    "load": {
+      "cap": "jug",
+      "pair": false
+    },
+    "pattern": "bridge",
+    "unilateral": true,
+    "instructions": [
+      "Esquena alta recolzada al banc, sofà o cadira contra la paret.",
+      "Garrafa sobre el maluc, un sol peu a terra i l'altra cama aixecada.",
+      "Puja el maluc fins a la línia recta i aguanta 1 s a dalt.",
+      "Fes totes les reps i canvia de cama."
+    ]
   }
 ]

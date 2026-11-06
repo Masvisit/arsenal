@@ -63,9 +63,9 @@ const BALLISTIC = /swing|snatch|clean|jerk|throw|toss|slam|push press|thruster|h
 export const SUB_RULES = {
   controlled: (ex) => !BALLISTIC.test(ex.name),
   // Garrafes/ampolles com a mancuernes: només moviments controlats i agafables
-  jugDumbbell: (ex) => !BALLISTIC.test(ex.name) && !/fly|flye|pullover|around the world|kickback|pronation|supination|wrist|hammer|zottman|spider|preacher|incline.*curl/i.test(ex.name),
+  jugDumbbell: (ex) => !BALLISTIC.test(ex.name) && !/overhead|fly|flye|pullover|around the world|kickback|pronation|supination|wrist|hammer|zottman|spider|preacher|incline.*curl/i.test(ex.name),
   // Garrafa de sorra com a kettlebell: goblet, rem, carries, pes mort
-  jugKettlebell: (ex) => !BALLISTIC.test(ex.name) && /goblet|row|carry|farmer|walk|deadlift|squat/i.test(ex.name),
+  jugKettlebell: (ex) => !BALLISTIC.test(ex.name) && !/overhead|windmill|get-up|press/i.test(ex.name) && /goblet|row|carry|farmer|walk|deadlift|squat/i.test(ex.name),
   notBarbell: (ex) => !['barbell', 'e-z curl bar'].includes(ex.equipment) && !/barbell|smith/i.test(ex.name),
   benchDip: (ex) => /bench dip|chair dip|triceps|tricep|dips? - triceps/i.test(ex.name),
   dip: () => true,

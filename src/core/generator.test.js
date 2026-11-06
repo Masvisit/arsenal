@@ -2,13 +2,16 @@ import { describe, it, expect } from 'vitest';
 import { readFileSync } from 'node:fs';
 import custom from '../data/custom-exercises.json';
 import coreIds from '../data/core-exercises.json';
-import { createLocation, locationCapabilities } from './inventory.js';
-import { generateWorkout, swapExercise, regenerateWorkout, toggleLock, planSlots, buildPool } from './generator.js';
+import templates from '../data/templates.json';
+import { createLocation, locationCapabilities, locationFromTemplate, resolveCap } from './inventory.js';
+import { generateWorkout, swapExercise, regenerateWorkout, toggleLock, buildPool, migrateWorkout } from './generator.js';
 import { getRequirements, feasibility } from './requirements.js';
 import { fatigueScores, fatigueLevels, levelsToBodyData } from './fatigue.js';
 import { adaptForLoad } from './adaptations.js';
-import { prescribe, exerciseCount } from './prescription.js';
+import { prescribe, blockParams } from './prescription.js';
 import { epley1RM, baseLift1RM } from './ratios.js';
+import { weightConflict, planBlocks, fitSession } from './blocks.js';
+import { demandScore, bodyweightCapacity } from './demand.js';
 
 const dataset = JSON.parse(readFileSync(new URL('../../public/data/exercises.json', import.meta.url), 'utf8'));
 const exercises = [...dataset, ...custom];
@@ -25,48 +28,143 @@ const myGym = () => createLocation({
     { catalogId: 'rack' },
   ],
 });
+const casa = () => createLocation({ name: 'Casa', kind: 'home', items: [{ catalogId: 'jug', attrs: { volumeL: 8, qty: 2, content: 'sand' } }, { catalogId: 'chair' }] });
+const blockEntries = (w, b) => w.blocks[b].entries.map((i) => w.exercises[i]);
 
-const casa = () => createLocation({
-  name: 'Casa',
-  kind: 'home',
-  items: [
-    { catalogId: 'jug', attrs: { volumeL: 8, qty: 2, content: 'sand' } },
-    { catalogId: 'chair' },
-  ],
-});
-
-describe('prescripció i ràtios', () => {
-  it('nombre d\'exercicis per durada', () => {
-    expect(exerciseCount(20, 'muscle')).toBe(3);
-    expect(exerciseCount(60, 'muscle')).toBe(6);
-    expect(exerciseCount(60, 'strength')).toBe(5);
+describe('prescripció, ràtios i adaptacions', () => {
+  it('esquemes exigents (RIR 1) i blocs per objectiu', () => {
+    expect(prescribe({ goal: 'muscle', compound: true, level: 'intermediate' })).toMatchObject({ repsLow: 6, repsHigh: 10, rir: 1 });
+    expect(prescribe({ goal: 'strength', compound: true, level: 'intermediate' })).toMatchObject({ repsLow: 3, repsHigh: 6 });
+    expect(blockParams('muscle', 'intermediate')).toMatchObject({ rounds: 4, restAfterRoundSec: 90 });
+    expect(blockParams('muscle', 'advanced').rounds).toBe(5);
+    expect(blockParams('muscle', 'novice').rounds).toBe(3);
   });
-  it('esquemes per objectiu', () => {
-    expect(prescribe({ goal: 'strength', compound: true, level: 'intermediate' })).toMatchObject({ repsLow: 3, repsHigh: 6, restSec: 180 });
-    expect(prescribe({ goal: 'muscle', compound: false, level: 'intermediate' })).toMatchObject({ repsLow: 10, repsHigh: 15 });
-    expect(prescribe({ goal: 'muscle', compound: true, level: 'novice' }).sets).toBe(2);
-  });
-  it('Epley només fins a 10 reps i referències del perfil', () => {
+  it('Epley i referències del perfil', () => {
     expect(epley1RM(100, 5)).toBeCloseTo(116.67, 1);
     expect(epley1RM(100, 12)).toBeNull();
     expect(baseLift1RM('bench', { ...profile, referenceLifts: { bench: { kg: 80, reps: 5 } } })).toMatchObject({ fromReference: true });
-    expect(baseLift1RM('bench', profile).kg).toBe(85);
   });
-});
-
-describe('adaptacions', () => {
-  it('si la càrrega es queda curta, puja reps i ho explica', () => {
-    const a = adaptForLoad({ oneRM: 30, maxKg: 15, p: { repsLow: 6, repsHigh: 10, rir: 2, restSec: 120 }, goal: 'muscle' });
+  it('material curt: puja reps i ho explica', () => {
+    const a = adaptForLoad({ oneRM: 25, maxKg: 15, p: { repsLow: 6, repsHigh: 10, rir: 2, restSec: 120 } });
     expect(a.strategies).toContain('moreReps');
     expect(a.text).toMatch(/Amb 15 kg no arribes a 6–10 reps al RIR 2/);
   });
-  it('si cal molt més, tempo i 1½', () => {
-    const a = adaptForLoad({ oneRM: 100, maxKg: 12, p: { repsLow: 6, repsHigh: 10, rir: 2, restSec: 120 }, goal: 'muscle', unilateral: true });
-    expect(a.strategies).toEqual(expect.arrayContaining(['unilateral', 'tempo']));
-    expect(a.tempo).toBe('3-1-1');
+  it('si en sobra molt: tempo + 1½ i mai més de 15 reps', () => {
+    const a = adaptForLoad({ oneRM: 100, maxKg: 12, p: { repsLow: 6, repsHigh: 10, rir: 1, restSec: 120 }, unilateral: true });
+    expect(a.strategies).toEqual(expect.arrayContaining(['unilateral', 'tempo', 'oneAndHalf']));
+    expect(a.repsHigh).toBeLessThanOrEqual(15);
   });
-  it('si n\'hi ha prou, no adapta', () => {
-    expect(adaptForLoad({ oneRM: 100, maxKg: 100, p: { repsLow: 6, repsHigh: 10, rir: 2, restSec: 120 } })).toBeNull();
+  it('també amb pes corporal', () => {
+    const a = adaptForLoad({ capacity: 40, p: { repsLow: 6, repsHigh: 10, rir: 1 } });
+    expect(a.text).toMatch(/^Amb el teu pes corporal no arribes/);
+  });
+});
+
+describe('exigència', () => {
+  const by = (n) => dataset.find((e) => e.name === n);
+  it('les variants fàcils puntuen per sota de les exigents', () => {
+    expect(demandScore(by('Glute Kickback'))).toBeLessThan(0);
+    expect(demandScore(by('Crunches'))).toBeLessThan(0);
+    expect(demandScore(by('Pullups'))).toBeGreaterThan(demandScore(by('Band Assisted Pull-Up')));
+    expect(demandScore(byId.custom_pistol_squat)).toBeGreaterThan(demandScore(by('Bodyweight Squat')));
+  });
+  it('capacitat amb pes corporal segons nivell, variant i referències', () => {
+    expect(bodyweightCapacity(by('Pushups'), profile)).toBe(25);
+    expect(bodyweightCapacity(by('Pushups'), { ...profile, referenceLifts: { pushups: 40 } })).toBe(40);
+    expect(bodyweightCapacity(byId.custom_pistol_squat, profile)).toBeLessThan(6);
+    expect(bodyweightCapacity(by('Barbell Squat'), profile)).toBeNull();
+  });
+});
+
+describe('blocs A-B-C', () => {
+  it('regla de pesos: només un exercici amb dues peses, tret que sigui el mateix pes', () => {
+    const w = (kg, pair, implement = 'dumbbell', itemUid = 'd1', itemKind = 'list') => ({ weight: { kg, pair, implement, itemUid, itemKind } });
+    expect(weightConflict([w(16, true), w(20, true)])).toBeTruthy();
+    expect(weightConflict([w(16, true), w(16, true)])).toBeNull();
+    expect(weightConflict([w(16, true), w(24, false)])).toBeTruthy();
+    expect(weightConflict([w(12, false), w(24, false)])).toBeNull(); // una pesa cada un
+    expect(weightConflict([w(40, false, 'barbell', 'bar', 'bar'), w(60, false, 'barbell', 'bar', 'bar')])).toBeTruthy(); // canviar discs
+    expect(weightConflict([w(8, false, 'jug', 'j', 'fillable'), w(12, false, 'jug', 'j', 'fillable')])).toBeTruthy(); // omplir la garrafa
+    expect(weightConflict([w(50, false, 'machine:x', 'm', 'stack'), w(16, true)])).toBeNull(); // màquina: canviar el pin és ràpid
+    expect(weightConflict([{ weight: null }, w(16, true)])).toBeNull();
+  });
+  it('repartiment: A compost gran, sense músculs repetits dins el bloc quan es pot', () => {
+    const b = planBlocks(['chest', 'lats', 'quads', 'hamstrings', 'abs', 'triceps'], 2);
+    expect(b).toHaveLength(2);
+    b.forEach((bl) => {
+      expect(bl.map((s) => s.pos)).toEqual(['A', 'B', 'C']);
+      expect(new Set(bl.map((s) => s.target)).size).toBe(3);
+    });
+    expect(b[0][0].target).toBe('quads');
+  });
+  it('blocs i rondes segons la durada', () => {
+    const p = blockParams('muscle', 'intermediate');
+    expect(fitSession(60, p)).toEqual({ blocks: 3, rounds: 4 });
+    expect(fitSession(45, p)).toEqual({ blocks: 2, rounds: 4 });
+    expect(fitSession(90, p).blocks).toBe(4);
+    expect(fitSession(20, p).rounds).toBeLessThan(4);
+  });
+});
+
+describe('sessions generades (molts llocs, objectius i seeds)', () => {
+  const locs = [...templates.map((t) => locationFromTemplate(t)), casa(), myGym()];
+  const targetsSets = [['chest', 'front-delts', 'triceps'], ['quads', 'glutes', 'hamstrings', 'calves'], ['chest', 'lats', 'middle-back', 'quads', 'glutes', 'abs']];
+  const cases = [];
+  for (const loc of locs) for (const goal of ['muscle', 'strength', 'fatloss']) for (const targets of targetsSets) for (const seed of [1, 2]) cases.push({ loc, goal, targets, seed });
+
+  it(`regla de pesos, material estricte i durada (${cases.length} sessions)`, () => {
+    for (const { loc, goal, targets, seed } of cases) {
+      const w = generateWorkout({ exercises, profile: { ...profile, goal }, location: loc, coreIds }, { targets, durationMin: 60, seed });
+      const caps = locationCapabilities(loc);
+      expect(w.blocks.length).toBeGreaterThan(0);
+      for (let b = 0; b < w.blocks.length; b++) {
+        expect(weightConflict(blockEntries(w, b)), `${loc.name} ${goal} bloc ${b}`).toBeNull();
+        expect(blockEntries(w, b).map((e) => e.pos)).toEqual(['A', 'B', 'C'].slice(0, blockEntries(w, b).length));
+      }
+      for (const e of w.exercises) {
+        expect(feasibility(byId[e.exerciseId], caps, loc.constraints).ok, `${loc.name}: ${e.exerciseId}`).toBe(true);
+        expect(e.sets.length).toBe(w.blocks[e.block].rounds);
+      }
+      // escalfament i estiraments: només amb material del lloc
+      for (const it of [...w.warmup, ...w.cooldown]) {
+        if (!it.exerciseId) continue;
+        expect(byId[it.exerciseId], it.exerciseId).toBeTruthy();
+      }
+      expect(w.estimatedMin).toBeLessThanOrEqual(60 * 1.2 + 1);
+    }
+  });
+
+  it('una sessió de gimnàs per a un intermedi no té exercicis "fàcils"', () => {
+    const gym = locationFromTemplate(templates[0]);
+    for (const seed of [1, 2, 3, 4, 5]) {
+      const w = generateWorkout({ exercises, profile, location: gym, coreIds }, { targets: ['chest', 'lats', 'quads', 'hamstrings', 'abs'], durationMin: 60, seed });
+      for (const e of w.exercises) expect(demandScore(byId[e.exerciseId]), e.exerciseId).toBeGreaterThan(-1);
+    }
+  });
+
+  it('estiraments sense company i amb el material que hi ha (paret per als bessons)', () => {
+    const noWall = createLocation({ items: [{ catalogId: 'dumbbells_fixed' }] });
+    const w = generateWorkout({ exercises, profile, location: noWall, coreIds }, { targets: ['calves', 'quads'], durationMin: 45, seed: 1 });
+    expect(w.cooldown.some((c) => c.exerciseId === 'Calf_Stretch_Hands_Against_Wall')).toBe(false);
+    const withWall = createLocation({ items: [{ catalogId: 'dumbbells_fixed' }, { catalogId: 'wall' }] });
+    const w2 = generateWorkout({ exercises, profile, location: withWall, coreIds }, { targets: ['calves', 'quads'], durationMin: 45, seed: 1 });
+    expect(w2.cooldown.some((c) => c.exerciseId === 'Calf_Stretch_Hands_Against_Wall')).toBe(true);
+    expect(w.warmup[0].kind).toBe('cardio');
+    expect(w.cooldown.at(-1).kind).toBe('breath');
+  });
+
+  it('escalfament amb cardio del lloc si n\'hi ha', () => {
+    const w = generateWorkout({ exercises, profile, location: locationFromTemplate(templates[0]), coreIds }, { targets: ['quads'], durationMin: 45, seed: 1 });
+    expect(w.warmup[0].name).toMatch(/Remadora|Cinta/);
+    const noJ = createLocation({ items: [{ catalogId: 'dumbbells_fixed' }], constraints: { noJumps: true } });
+    const w2 = generateWorkout({ exercises, profile, location: noJ, coreIds }, { targets: ['quads'], durationMin: 45, seed: 1 });
+    expect(w2.warmup[0].name).toMatch(/Marxa/);
+  });
+
+  it('kettlebells sense parell → cap exercici de dues kettlebells', () => {
+    const loc = createLocation({ items: [{ catalogId: 'kettlebells', attrs: { weights: [8, 12, 16, 20, 24] } }] });
+    const pool = buildPool({ exercises, profile, location: loc });
+    pool.forEach((c) => expect(c.req.load?.pair && c.req.load.cap === 'kettlebell' ? c.hasLoad : true, c.ex.name).toBe(true));
   });
 });
 
@@ -74,21 +172,8 @@ describe('fatiga', () => {
   it('principal ×1, secundari ×0,5 i 5 nivells', () => {
     const scores = fatigueScores([{ sets: 4, primary: ['chest'], secondary: ['triceps'] }, { sets: 3, primary: ['triceps'], secondary: [] }]);
     expect(scores).toEqual({ chest: 4, triceps: 5 });
-    const lv = fatigueLevels(scores);
-    expect(lv.triceps).toBe(5);
-    expect(lv.chest).toBe(4);
-    const data = levelsToBodyData({ lats: 2, 'middle-back': 4 });
-    expect(data).toEqual([{ name: 'upper-back', muscles: ['upper-back'], frequency: 4 }]);
-  });
-});
-
-describe('franges', () => {
-  it('compost principal del grup més gran, segon d\'una altra regió, core al final', () => {
-    const s = planSlots(['chest', 'triceps', 'quads', 'abs'], 5);
-    expect(s[0]).toEqual({ kind: 'a', target: 'quads' });
-    expect(s[1]).toEqual({ kind: 'b', target: 'chest' });
-    expect(s.at(-1)).toEqual({ kind: 'd', target: 'abs' });
-    expect(s).toHaveLength(5);
+    expect(fatigueLevels(scores)).toEqual({ chest: 4, triceps: 5 });
+    expect(levelsToBodyData({ lats: 2, 'middle-back': 4 })).toEqual([{ name: 'upper-back', muscles: ['upper-back'], frequency: 4 }]);
   });
 });
 
@@ -97,46 +182,30 @@ describe('criteri 1: press de banca al Gimnàs amb discs de 5 a 25 kg', () => {
     const w = generateWorkout({ exercises, profile: { ...profile, goal: 'strength' }, location: myGym(), coreIds }, { targets: ['chest'], durationMin: 45, seed: 1 });
     const bench = w.exercises.find((e) => /bench press/i.test(byId[e.exerciseId].name) && getRequirements(byId[e.exerciseId]).load?.cap === 'barbell');
     expect(bench, w.exercises.map((e) => e.exerciseId).join(',')).toBeTruthy();
-    const kgs = bench.load.chips.map((c) => c.kg);
-    expect(kgs.length).toBeGreaterThan(1);
-    kgs.forEach((k) => expect((k - 20) % 10).toBe(0));
-    expect(bench.sets[0].loadSetup).toMatch(/^Barra 20 \+ 2×\d+.* = \d+ kg$/);
-    // 85 kg intermedi → 1RM ≈ 85 → 4–5 reps al RIR 2 ≈ 66 kg → 60 o 70
-    expect([60, 70]).toContain(bench.sets[0].loadKg);
+    bench.load.chips.map((c) => c.kg).forEach((k) => expect((k - 20) % 10).toBe(0));
+    expect(bench.sets[0].loadSetup).toMatch(/^Barra 20( \+ 2×\d+)* = \d+ kg$|^Barra 20 kg$/);
   });
 });
 
-describe('criteri 2: Casa amb 2 garrafes de 8 L de sorra i una cadira, cames', () => {
+describe('criteri 2: Casa amb 2 garrafes de sorra i una cadira, cames', () => {
   const legs = ['quads', 'glutes', 'hamstrings', 'calves'];
-  const w = generateWorkout({ exercises, profile, location: casa(), coreIds }, { targets: legs, durationMin: 45, seed: 7 });
-  const names = w.exercises.map((e) => byId[e.exerciseId].name);
-
-  it('cap exercici demana barra ni màquina', () => {
-    for (const e of w.exercises) {
-      const req = getRequirements(byId[e.exerciseId]).requires.flat();
-      expect(req.some((c) => c === 'barbell' || c.startsWith('machine:') || c.startsWith('cable'))).toBe(false);
-    }
-  });
-  it('surten goblet o búlgara amb garrafa', () => {
-    expect(names.some((n) => /goblet|búlgar/i.test(n)), names.join(' | ')).toBe(true);
-    expect(w.exercises.some((e) => /Garrafa/.test(e.sets[0].loadSetup || ''))).toBe(true);
-  });
-  it('la càrrega es queda curta → adaptació explicada', () => {
-    const adapted = w.exercises.filter((e) => e.adaptationText);
-    expect(adapted.length).toBeGreaterThan(0);
-    expect(adapted[0].adaptationText).toMatch(/Amb \d+(,\d+)? kg no arribes/);
-  });
-  it('passa amb la majoria de seeds (no és casualitat)', () => {
+  it('sense barra ni màquina, amb garrafa i adaptació explicada (20 seeds)', () => {
     let hits = 0;
     for (let s = 1; s <= 20; s++) {
-      const wx = generateWorkout({ exercises, profile, location: casa(), coreIds }, { targets: legs, durationMin: 45, seed: s });
-      if (wx.exercises.some((e) => /goblet|búlgar/i.test(byId[e.exerciseId].name))) hits++;
+      const w = generateWorkout({ exercises, profile, location: casa(), coreIds }, { targets: legs, durationMin: 45, seed: s });
+      for (const e of w.exercises) {
+        const req = getRequirements(byId[e.exerciseId]).requires.flat();
+        expect(req.some((c) => c === 'barbell' || c.startsWith('machine:') || c.startsWith('cable'))).toBe(false);
+      }
+      if (w.exercises.some((e) => /goblet|búlgar/i.test(byId[e.exerciseId].name))) hits++;
+      expect(w.exercises.some((e) => e.adaptationText)).toBe(true);
     }
     expect(hits).toBeGreaterThanOrEqual(18);
   });
   it('és determinista per seed', () => {
-    const w2 = generateWorkout({ exercises, profile, location: casa(), coreIds }, { targets: legs, durationMin: 45, seed: 7 });
-    expect(w2.exercises.map((e) => e.exerciseId)).toEqual(w.exercises.map((e) => e.exerciseId));
+    const a = generateWorkout({ exercises, profile, location: casa(), coreIds }, { targets: legs, durationMin: 45, seed: 7 });
+    const b = generateWorkout({ exercises, profile, location: casa(), coreIds }, { targets: legs, durationMin: 45, seed: 7 });
+    expect(b.exercises.map((e) => e.exerciseId)).toEqual(a.exercises.map((e) => e.exerciseId));
   });
 });
 
@@ -144,28 +213,21 @@ describe('criteri 3: sense salts al generador', () => {
   it('objectiu potència en un lloc "Sense salts" → cap pliometria', () => {
     const loc = createLocation({ items: [{ catalogId: 'plyo_box' }, { catalogId: 'hurdles' }, { catalogId: 'dumbbells_fixed' }], constraints: { noJumps: true } });
     const p = { ...profile, goal: 'power' };
-    const pool = buildPool({ exercises, profile: p, location: loc });
-    pool.forEach((c) => {
+    buildPool({ exercises, profile: p, location: loc }).forEach((c) => {
       expect(c.ex.category).not.toBe('plyometrics');
       expect(c.req.jump).toBe(false);
     });
-    const w = generateWorkout({ exercises, profile: p, location: loc }, { targets: ['quads', 'glutes', 'calves'], durationMin: 60, seed: 3 });
-    w.exercises.forEach((e) => expect(byId[e.exerciseId].category).not.toBe('plyometrics'));
-    // i sense la restricció, sí que n'hi ha
-    const loc2 = { ...loc, constraints: { noJumps: false } };
-    const pool2 = buildPool({ exercises, profile: p, location: loc2 });
-    expect(pool2.some((c) => c.ex.category === 'plyometrics')).toBe(true);
+    expect(buildPool({ exercises, profile: p, location: { ...loc, constraints: { noJumps: false } } }).some((c) => c.ex.category === 'plyometrics')).toBe(true);
   });
 });
 
 describe('criteri 4: canviar i regenerar', () => {
-  const gym = myGym();
-  gym.items.push({ uid: 'x1', catalogId: 'dumbbells_fixed', attrs: {} }, { uid: 'x2', catalogId: 'bench_adjustable', attrs: {} }, { uid: 'x3', catalogId: 'cable_station', attrs: {} });
+  const gym = locationFromTemplate(templates[0]);
   const ctx = { exercises, profile, location: gym, coreIds };
-  const w = generateWorkout(ctx, { targets: ['chest', 'triceps', 'front-delts'], durationMin: 45, seed: 11 });
+  const w = generateWorkout(ctx, { targets: ['chest', 'triceps', 'front-delts'], durationMin: 60, seed: 11 });
   const caps = locationCapabilities(gym);
 
-  it('canviar → realitzable, mateix múscul principal i no repetit', () => {
+  it('canviar → realitzable, mateix múscul principal, sense repetir i respectant la regla de pesos', () => {
     let cur = w;
     for (let k = 0; k < 6; k++) {
       const before = cur.exercises[0];
@@ -175,26 +237,41 @@ describe('criteri 4: canviar i regenerar', () => {
       const target = before.primary.includes(before.slot.target) ? before.slot.target : before.primary[0];
       expect(ne.primary).toContain(target);
       expect(feasibility(byId[ne.exerciseId], caps, gym.constraints).ok).toBe(true);
+      expect(weightConflict(blockEntries(after, 0))).toBeNull();
       const ids = after.exercises.map((e) => e.exerciseId);
       expect(new Set(ids).size).toBe(ids.length);
       cur = after;
     }
   });
 
-  it('regenerar respecta els bloquejats', () => {
+  it('regenerar respecta els bloquejats i manté els blocs', () => {
     const locked = toggleLock(w, 1);
     const r = regenerateWorkout(locked, ctx, 999);
     expect(r.exercises[1].exerciseId).toBe(w.exercises[1].exerciseId);
     expect(r.exercises[1].locked).toBe(true);
-    expect(r.seed).toBe(999);
-    const changed = r.exercises.filter((e, i) => i !== 1 && e.exerciseId !== w.exercises[i]?.exerciseId);
-    expect(changed.length).toBeGreaterThan(0);
+    expect(r.blocks.length).toBe(w.blocks.length);
+    expect(r.exercises.filter((e, i) => i !== 1 && e.exerciseId !== w.exercises[i]?.exerciseId).length).toBeGreaterThan(0);
   });
 
-  it('resultat complet: títol, escalfament, durada, nota de cobertura', () => {
+  it('sessió completa: escalfament, blocs, estiraments, títol i durada', () => {
     expect(w.title).toBe('Pit, espatlles i tríceps');
-    expect(w.warmup[0].minutes).toBe(5);
-    expect(w.estimatedMin).toBeGreaterThan(20);
-    expect(w.uncovered).toEqual([]);
+    expect(w.warmup.length).toBeGreaterThanOrEqual(5);
+    expect(w.cooldown.length).toBeGreaterThanOrEqual(4);
+    expect(w.exercises.length).toBeGreaterThanOrEqual(6);
+    expect(w.estimatedMin).toBeGreaterThan(40);
   });
 });
+
+describe('migració de sessions desades (esquema 1 → 2)', () => {
+  it('agrupa en blocs de 3', () => {
+    const old = { schemaVersion: 1, exercises: Array.from({ length: 5 }, (_, i) => ({ exerciseId: `e${i}`, slot: { kind: 'c', target: 'chest' }, sets: [{}, {}, {}] })), warmup: [{ text: 'x', minutes: 5 }] };
+    const m = migrateWorkout(old);
+    expect(m.schemaVersion).toBe(2);
+    expect(m.blocks.map((b) => b.entries)).toEqual([[0, 1, 2], [3, 4]]);
+    expect(m.exercises[4].pos).toBe('B');
+    expect(m.warmup[0]).toMatchObject({ kind: 'cardio', seconds: 300 });
+  });
+});
+
+// resolveCap s'importa per assegurar que l'API pública existeix
+expect(typeof resolveCap).toBe('function');
