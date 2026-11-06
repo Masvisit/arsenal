@@ -46,6 +46,10 @@ const P = {
   grid: 'M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z',
   home2: 'M4 10l8-6 8 6v10H4zM10 20v-6h4v6',
   tree: 'M12 3l6 9h-4l4 6H6l4-6H6zM12 18v3',
+  pause: 'M8 5v14M16 5v14',
+  bell: 'M6 16V11a6 6 0 0 1 12 0v5l2 2H4zM10 21h4',
+  bellOff: 'M6 16V11a6 6 0 0 1 9.5-4.9M18 11v5l2 2H8M10 21h4M3 3l18 18',
+  chart: 'M4 20V10M10 20V4M16 20v-7M22 20H2',
   download: 'M12 4v12M7 11l5 5 5-5M5 20h14',
   upload: 'M12 20V8M7 13l5-5 5 5M5 4h14',
 };

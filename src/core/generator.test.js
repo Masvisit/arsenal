@@ -250,7 +250,8 @@ describe('criteri 4: canviar i regenerar', () => {
     expect(r.exercises[1].exerciseId).toBe(w.exercises[1].exerciseId);
     expect(r.exercises[1].locked).toBe(true);
     expect(r.blocks.length).toBe(w.blocks.length);
-    expect(r.exercises.filter((e, i) => i !== 1 && e.exerciseId !== w.exercises[i]?.exerciseId).length).toBeGreaterThan(0);
+    // proposa alternatives: canvien la majoria dels no bloquejats
+    expect(r.exercises.filter((e, i) => i !== 1 && e.exerciseId !== w.exercises[i]?.exerciseId).length).toBeGreaterThanOrEqual(Math.floor((w.exercises.length - 1) / 2));
   });
 
   it('sessió completa: escalfament, blocs, estiraments, títol i durada', () => {

@@ -7,29 +7,34 @@ import { TARGET_LABELS, TARGET_TO_SLUGS } from '../core/muscles.js';
 import { formatKg } from '../core/loads.js';
 import labels from '../data/i18n/labels.ca.json';
 
-function setText(s) {
-  if (s.seconds) return `${s.seconds} s`;
-  return s.repsLow === s.repsHigh ? `${s.repsLow} reps` : `${s.repsLow}–${s.repsHigh} reps`;
+export function setTarget(s, unilateral) {
+  const side = unilateral ? ' per costat' : '';
+  if (s.seconds) return `${s.seconds} s${side}`;
+  return (s.repsLow === s.repsHigh ? `${s.repsLow} reps` : `${s.repsLow}–${s.repsHigh} reps`) + side;
 }
 
-export default function ExerciseCard({ entry, ex, index, onSwap, onLock }) {
+export default function ExerciseCard({ entry, ex, onSwap, onLock }) {
   const [open, setOpen] = useState(false);
   const [chip, setChip] = useState(null);
   if (!ex) return null;
   const name = exerciseName(ex);
-  const material = entry.sets[0]?.loadSetup || entry.equipmentUsed?.[0] || (entry.load ? null : labels.equipment[ex.equipment ?? 'null'] || 'Pes corporal');
-  const chosen = chip ?? entry.sets[0]?.loadKg;
+  const s0 = entry.sets[0] || {};
+  const material = s0.loadSetup || entry.equipmentUsed?.[0] || (entry.load ? null : labels.equipment[ex.equipment ?? 'null'] || 'Pes corporal');
+  const chosen = chip ?? s0.loadKg;
   const isCa = !!ex.custom;
   return (
-    <article className="card overflow-hidden p-4" data-testid="exercise-card" data-exercise-id={ex.id}>
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-[minmax(0,240px)_minmax(0,1fr)]">
+    <article className="card overflow-hidden p-4" data-testid="exercise-card" data-exercise-id={ex.id} data-pos={entry.pos}>
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-[minmax(0,220px)_minmax(0,1fr)]">
         <ExerciseImage ex={ex} primary={entry.primary} secondary={entry.secondary} />
         <div className="min-w-0">
           <div className="flex items-start justify-between gap-2">
-            <div className="min-w-0">
-              <div className="text-xs font-semibold uppercase tracking-wider text-ink-soft">{index + 1}. {TARGET_LABELS[entry.slot.target]}</div>
-              <h3 className="text-lg font-bold leading-snug">{name}</h3>
-              {material && <p className="mt-0.5 text-sm text-accent-soft" data-testid="load-setup">{material}</p>}
+            <div className="flex min-w-0 gap-3">
+              <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-accent text-lg font-extrabold text-white" aria-label={`Exercici ${entry.pos}`}>{entry.pos}</span>
+              <div className="min-w-0">
+                <div className="text-xs font-semibold uppercase tracking-wider text-ink-soft">{TARGET_LABELS[entry.slot.target]}</div>
+                <h3 className="text-lg font-bold leading-snug">{name}</h3>
+                {material && <p className="mt-0.5 text-sm text-accent-soft" data-testid="load-setup">{material}</p>}
+              </div>
             </div>
             <div className="flex shrink-0 gap-1">
               <button type="button" onClick={onLock} aria-pressed={entry.locked} aria-label={entry.locked ? 'Desbloqueja' : 'Bloqueja'}
@@ -42,37 +47,32 @@ export default function ExerciseCard({ entry, ex, index, onSwap, onLock }) {
             </div>
           </div>
 
-          <div className="mt-2 flex flex-wrap gap-1.5">
-            {entry.adapted && <span className="chip border-amber-500/40 text-amber-300">Adaptat</span>}
-            {entry.adaptationText && <span className="chip border-fat-3/40 text-fat-2">Material curt</span>}
-            {entry.tempo && <span className="chip">Tempo {entry.tempo}</span>}
-            {entry.emom && <span className="chip">EMOM</span>}
-          </div>
-
-          <div className="mt-3 flex gap-3">
-            <ol className="flex-1 space-y-1 text-sm">
-              {entry.sets.map((s, i) => (
-                <li key={i} className="flex justify-between gap-3 border-b border-line/60 py-1 last:border-0">
-                  <span className="text-ink-soft">Sèrie {i + 1}</span>
-                  <span className="font-semibold">{setText(s)}{chosen ? ` · ${formatKg(chosen)} kg` : ''}</span>
-                </li>
-              )).slice(0, entry.emom ? 1 : undefined)}
-              {entry.emom && <li className="text-xs text-ink-soft">… durant 10 minuts</li>}
-            </ol>
+          <div className="mt-3 flex items-center gap-3">
+            <div className="flex-1">
+              <div className="text-xl font-extrabold leading-tight sm:text-2xl" data-testid="prescription">
+                {entry.emom ? 'EMOM 10′' : `${entry.sets.length} × ${setTarget(s0, entry.unilateral)}`}
+                {chosen ? <span className="whitespace-nowrap text-accent-soft"> · {formatKg(chosen)} kg</span> : null}
+              </div>
+              <p className="mt-1 text-xs text-ink-soft">
+                RIR {s0.rir ?? '–'}{entry.tempo ? ` · Tempo ${entry.tempo}` : ''}{entry.note ? ` · ${entry.note}` : ''}
+              </p>
+            </div>
             <div className="w-20 shrink-0">
               <BodyMap mode="mini" views="both" maxWidth={36} showLabels={false}
                 slugs={entry.primary.flatMap((t) => TARGET_TO_SLUGS[t] || [])}
                 secondarySlugs={entry.secondary.flatMap((t) => TARGET_TO_SLUGS[t] || [])} />
             </div>
           </div>
-          <p className="mt-2 text-xs text-ink-soft">
-            {entry.restSec ? `Descans ${entry.restSec} s` : 'Sense descans fix'} · RIR {entry.sets[0]?.rir ?? '–'}
-            {entry.note ? ` · ${entry.note}` : ''}
-          </p>
+
+          <div className="mt-2 flex flex-wrap gap-1.5">
+            {entry.adapted && <span className="chip border-amber-500/40 text-amber-300">Adaptat</span>}
+            {entry.adaptationText && <span className="chip border-fat-3/40 text-fat-2">Més dur: material curt</span>}
+            {entry.sameWeightNote && <span className="chip border-emerald-500/40 text-emerald-300">Mateix pes</span>}
+          </div>
         </div>
       </div>
 
-      {entry.load?.chips?.length > 0 && (
+      {entry.load?.chips?.length > 1 && (
         <div className="mt-3">
           <div className="mb-1 text-xs text-ink-soft">{entry.load.hint}</div>
           <div className="flex flex-wrap gap-1.5">
@@ -83,9 +83,7 @@ export default function ExerciseCard({ entry, ex, index, onSwap, onLock }) {
               </button>
             ))}
           </div>
-          {chip != null && chip !== entry.sets[0]?.loadKg && (
-            <p className="mt-1 text-xs text-accent-soft">{entry.load.chips.find((c) => c.kg === chip)?.setup}</p>
-          )}
+          {chip != null && chip !== s0.loadKg && <p className="mt-1 text-xs text-accent-soft">{entry.load.chips.find((c) => c.kg === chip)?.setup}</p>}
         </div>
       )}
 
@@ -94,9 +92,8 @@ export default function ExerciseCard({ entry, ex, index, onSwap, onLock }) {
           <Icon name="warning" size={16} className="mr-1 inline -translate-y-0.5" />{entry.adaptationText}
         </div>
       )}
-      {entry.adapted && entry.substitutionNotes?.length > 0 && (
-        <p className="mt-2 text-sm text-amber-300/90">Adaptat: {entry.substitutionNotes.join(' · ')}</p>
-      )}
+      {entry.sameWeightNote && <p className="mt-2 text-sm text-emerald-300/90">{entry.sameWeightNote}</p>}
+      {entry.adapted && entry.substitutionNotes?.length > 0 && <p className="mt-2 text-sm text-amber-300/90">Adaptat: {entry.substitutionNotes.join(' · ')}</p>}
       {entry.safety?.length > 0 && <p className="mt-1 text-xs text-ink-soft">⚠︎ {entry.safety.join(' ')}</p>}
 
       <button type="button" onClick={() => setOpen((o) => !o)} aria-expanded={open}

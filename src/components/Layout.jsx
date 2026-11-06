@@ -4,12 +4,13 @@ import Icon from './Icon.jsx';
 const NAV = [
   { to: '/', label: 'Inici', icon: 'home', end: true },
   { to: '/crear', label: 'Crear', icon: 'plus' },
+  { to: '/historial', label: 'Historial', icon: 'chart' },
   { to: '/material', label: 'Material', icon: 'dumbbell' },
   { to: '/perfil', label: 'Perfil', icon: 'user' },
 ];
 
 // Pantalles a pantalla completa (sense barra de navegació)
-const FULLSCREEN = [/^\/assistent/, /^\/generant/];
+const FULLSCREEN = [/^\/assistent/, /^\/generant/, /^\/entrenament\/[^/]+\/fer/];
 // Pantalles amb barra d'accions pròpia a baix: sense navegació inferior al mòbil
 const OWN_BOTTOM_BAR = [/^\/entrenament/];
 
@@ -42,7 +43,7 @@ export default function Layout() {
           <div className="mx-auto flex max-w-md justify-around pt-1">
             {NAV.map((n) => (
               <NavLink key={n.to} to={n.to} end={n.end}
-                className={({ isActive }) => `flex min-h-tap min-w-[64px] flex-col items-center justify-center text-[11px] ${isActive ? 'text-accent-soft' : 'text-ink-soft'}`}>
+                className={({ isActive }) => `flex min-h-tap min-w-[56px] flex-col items-center justify-center text-[11px] ${isActive ? 'text-accent-soft' : 'text-ink-soft'}`}>
                 <Icon name={n.icon} size={22} />
                 <span>{n.label}</span>
               </NavLink>

@@ -3,7 +3,8 @@ import { Link, useNavigate, useParams } from 'react-router-dom';
 import Icon from '../components/Icon.jsx';
 import BodyMap, { FatigueLegend } from '../components/BodyMap.jsx';
 import ExerciseCard from '../components/ExerciseCard.jsx';
-import { useExercises, coreIds } from '../data/useExercises.js';
+import { useExercises, coreIds, exerciseName } from '../data/useExercises.js';
+import { useHistoryStore } from '../store/historyStore.js';
 import { useWorkoutStore } from '../store/workoutStore.js';
 import { useProfileStore } from '../store/profileStore.js';
 import { useInventoryStore } from '../store/inventoryStore.js';
@@ -18,7 +19,7 @@ export default function Result() {
   const workout = useWorkoutStore((s) => s.saved.find((w) => w.id === id) || (s.current?.id === id ? s.current : null));
   const update = useWorkoutStore((s) => s.update);
   const save = useWorkoutStore((s) => s.save);
-  const saved = useWorkoutStore((s) => s.saved);
+  const logs = useHistoryStore((s) => s.logs);
   const profile = useProfileStore((s) => s.profile);
   const location = useInventoryStore((s) => s.locations.find((l) => l.id === workout?.locationId));
   const [toast, setToast] = useState('');
@@ -34,7 +35,7 @@ export default function Result() {
     );
   }
 
-  const ctx = { exercises, profile, location, history: saved.filter((w) => w.id !== workout.id), coreIds };
+  const ctx = { exercises, profile, location, history: logs, coreIds };
   const canEdit = ready && !!location;
   const flash = (t) => { setToast(t); setTimeout(() => setToast(''), 1800); };
   const onSwap = (i) => {
@@ -50,7 +51,7 @@ export default function Result() {
 
   const chips = [
     ['check', LEVEL_LABELS[workout.level], 'Nivell'],
-    ['dumbbell', String(workout.exercises.length), 'Exercicis'],
+    ['dumbbell', `${workout.exercises.length} · ${workout.blocks.length} bl.`, 'Exercicis'],
     ['target', workout.goalLabel, 'Objectiu'],
     ['clock', `~${workout.estimatedMin} min`, 'Durada'],
     ['pin', workout.locationName, 'Lloc'],
@@ -92,19 +93,28 @@ export default function Result() {
               {workout.notes.map((n) => <p key={n}>{n}</p>)}
             </div>
           )}
-          <div className="card mt-3 p-4">
-            <h2 className="mb-2 font-bold">Escalfament</h2>
-            <ul className="space-y-1 text-sm text-ink-soft">
-              {workout.warmup.map((w) => <li key={w.text}>• {w.text}</li>)}
-            </ul>
-          </div>
         </section>
 
         <section className="mt-4 space-y-4 lg:mt-0">
           {!ready && <div className="card p-6 text-center text-ink-soft">Carregant exercicis…</div>}
-          {ready && workout.exercises.map((e, i) => (
-            <ExerciseCard key={`${e.exerciseId}-${i}`} entry={e} ex={byId[e.exerciseId]} index={i} onSwap={() => onSwap(i)} onLock={() => onLock(i)} />
-          ))}
+          {ready && (
+            <>
+              <ItemList title="1. Escalfament" items={workout.warmup} byId={byId} testId="warmup" />
+              {workout.blocks.map((b) => (
+                <div key={b.index} className="space-y-3" data-testid="block">
+                  <div className="flex flex-wrap items-end justify-between gap-2 px-1 pt-2">
+                    <h2 className="text-xl font-extrabold">{b.index + 2}. {b.label}: {b.entries.map((i) => workout.exercises[i].pos).join(' → ')}</h2>
+                    <span className="text-sm text-ink-soft">{b.rounds} rondes · canvi {b.transitionSec} s · descans {b.restAfterRoundSec} s</span>
+                  </div>
+                  <p className="px-1 text-sm text-ink-soft">Fes {b.entries.map((i) => workout.exercises[i].pos).join(', ')} seguits, descansa i repeteix fins a {b.rounds} rondes.</p>
+                  {b.entries.map((i) => (
+                    <ExerciseCard key={`${workout.exercises[i].exerciseId}-${i}`} entry={workout.exercises[i]} ex={byId[workout.exercises[i].exerciseId]} onSwap={() => onSwap(i)} onLock={() => onLock(i)} />
+                  ))}
+                </div>
+              ))}
+              <ItemList title={`${workout.blocks.length + 2}. Estiraments`} items={workout.cooldown} byId={byId} testId="cooldown" />
+            </>
+          )}
           {ready && workout.exercises.length === 0 && (
             <div className="card p-6 text-center text-ink-soft">
               No hi ha cap exercici realitzable amb aquest material i aquests músculs. Afegeix material al lloc o tria altres músculs.
@@ -124,6 +134,35 @@ export default function Result() {
         </div>
       </div>
       {toast && <div role="status" className="fixed inset-x-0 bottom-24 z-40 mx-auto w-fit rounded-full bg-ink px-4 py-2 text-sm font-semibold text-bg shadow-lg">{toast}</div>}
+    </div>
+  );
+}
+
+export function itemLabel(it, byId) {
+  if (it.name) return it.name;
+  return exerciseName(byId[it.exerciseId]) || it.exerciseId;
+}
+
+export function itemAmount(it) {
+  if (it.reps && !it.seconds) return `${it.reps} reps`;
+  if (it.reps) return `${it.reps} reps`;
+  const s = it.seconds || 30;
+  const t = s >= 60 ? `${Math.round(s / 6) / 10} min`.replace('.', ',') : `${s} s`;
+  return it.perSide ? `${t} per costat` : t;
+}
+
+function ItemList({ title, items, byId, testId }) {
+  return (
+    <div className="card p-4" data-testid={testId}>
+      <h2 className="mb-2 text-xl font-extrabold">{title}</h2>
+      <ol className="divide-y divide-line">
+        {items.map((it, k) => (
+          <li key={k} className="flex items-baseline justify-between gap-3 py-2 text-sm">
+            <span className="min-w-0">{itemLabel(it, byId)}</span>
+            <span className="shrink-0 font-semibold text-accent-soft">{itemAmount(it)}</span>
+          </li>
+        ))}
+      </ol>
     </div>
   );
 }

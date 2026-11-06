@@ -5,6 +5,7 @@ import { chromium } from 'playwright';
 import { mkdirSync, readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
+import { weightConflict } from '../src/core/blocks.js';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const OUT = join(root, 'docs', 'captures');
@@ -210,6 +211,83 @@ for (const vp of ['mobil', 'escriptori']) {
   const ids = await cardIds(page);
   check(ids.length > 0 && ids.every((id) => byId[id].category !== 'plyometrics' && !/jump|hop|bound|leap/i.test(byId[id].name)), `[${vp}] criteri 3: cap pliometria amb "Sense salts" (${ids.map((i) => byId[i].name).join(' | ')})`);
   await shot(page, `${vp}-c3-sense-salts`);
+  await ctx.close();
+}
+
+// ---------------- F. Sessió en blocs, sessió en directe i historial ----------------
+async function workoutFromStorage(page) {
+  return page.evaluate(() => JSON.parse(localStorage.getItem('arsenal-workouts') || '{}').state?.current);
+}
+for (const vp of ['mobil', 'escriptori']) {
+  const gymLoc = loc('loc_gym', 'Gimnàs', 'gym', [
+    item('barbell_olympic'), item('plates', { plates: [1.25, 2.5, 5, 10, 15, 20, 25].map((kg) => ({ kg, qty: 4 })) }),
+    item('dumbbells_fixed'), item('bench_adjustable'), item('rack'), item('cable_station'), item('kettlebells', { weights: [8, 12, 16, 20, 24] }), item('rower'),
+  ]);
+  const { ctx, page } = await newPage(vp, { fn: seed, arg: { profile: PROFILE, locations: [gymLoc], wizard: { mode: 'quick', locationId: 'loc_gym', durationMin: 60, targets: ['chest', 'lats', 'middle-back', 'quads', 'hamstrings', 'abs'] } } });
+  await page.clock.install();
+  await go(page, '/generant');
+  await page.clock.fastForward(1500);
+  await page.waitForSelector('[data-testid="exercise-card"]', { timeout: 8000 });
+  const w = await workoutFromStorage(page);
+  const nBlocks = await page.getByTestId('block').count();
+  check(nBlocks >= 2 && w.blocks.length === nBlocks, `[${vp}] punt 1: sessió de 60 min en ${nBlocks} blocs A-B-C (${w.exercises.length} exercicis)`);
+  const conflicts = w.blocks.map((b) => weightConflict(b.entries.map((i) => w.exercises[i]))).filter(Boolean);
+  check(conflicts.length === 0, `[${vp}] punt 2: cap bloc amb canvis de pes a mitja ronda`);
+  check(await page.getByTestId('warmup').isVisible() && await page.getByTestId('cooldown').isVisible(), `[${vp}] punt 3: escalfament i estiraments detallats`);
+  const warmTxt = await page.getByTestId('warmup').innerText();
+  check(/Remadora/.test(warmTxt), `[${vp}] punt 5: l'escalfament fa servir el material del lloc (remadora)`);
+  await shot(page, `${vp}-20-sessio-blocs`);
+  await page.getByTestId('block').first().scrollIntoViewIfNeeded();
+  await waitImages(page, page.locator('[data-testid="exercise-card"]').first());
+  await shot(page, `${vp}-21-bloc-1`);
+  await page.getByTestId('cooldown').scrollIntoViewIfNeeded();
+  await shot(page, `${vp}-22-estiraments`);
+
+  // Sessió en directe (manual)
+  await page.getByRole('button', { name: /Començar/ }).click();
+  await page.waitForURL(/\/fer$/);
+  await shot(page, `${vp}-23-directe-inici`);
+  await page.getByRole('button', { name: /Manual/ }).click();
+  await page.getByTestId('live-start').click();
+  check(/Escalfament/i.test(await page.getByTestId('live-phase').innerText()), `[${vp}] punt 4: la sessió comença per l'escalfament`);
+  await shot(page, `${vp}-24-directe-escalfament`);
+  for (let k = 0; k < 20; k++) {
+    if (/Bloc 1/i.test(await page.getByTestId('live-phase').innerText())) break;
+    await page.getByTestId('live-next').click();
+  }
+  check(/Bloc 1 · Ronda 1\//i.test(await page.getByTestId('live-phase').innerText()), `[${vp}] punt 4: després de l'escalfament toca el bloc 1, ronda 1`);
+  await page.getByRole('button', { name: 'Una rep menys' }).click();
+  await waitImages(page, page.getByTestId('live'));
+  await shot(page, `${vp}-25-directe-exercici`);
+  const t1 = await page.getByTestId('live-title').innerText();
+  await page.getByTestId('live-next').click();
+  check(/Descans/i.test(await page.getByTestId('live-phase').innerText()), `[${vp}] punt 4: entre A i B hi ha el canvi amb compte enrere`);
+  await shot(page, `${vp}-26-directe-descans`);
+  // Manual: el descans s'acaba però no avança sol
+  await page.clock.fastForward(40000);
+  check(/Descans/i.test(await page.getByTestId('live-phase').innerText()), `[${vp}] punt 4: en mode manual no avança sol`);
+  // Automàtic: avança sol
+  await page.getByRole('button', { name: 'Auto' }).click();
+  await page.clock.fastForward(2000);
+  const ph = await page.getByTestId('live-phase').innerText();
+  const t2 = await page.getByTestId('live-title').innerText();
+  check(/Bloc 1/i.test(ph) && t2 !== t1, `[${vp}] punt 4: en mode automàtic passa sol a l'exercici B (${t2})`);
+  await page.clock.fastForward(120000);
+  const ph2 = await page.getByTestId('live-phase').innerText();
+  check(!/Escalfament/i.test(ph2), `[${vp}] punt 4: el mode automàtic continua avançant (${ph2.replace(/\n/g, ' ')})`);
+  await shot(page, `${vp}-27-directe-auto`);
+  // Acabar i desar
+  await page.getByRole('button', { name: 'Sortir' }).click();
+  await page.getByRole('button', { name: /Acabar ara i desar/ }).click();
+  await page.waitForURL(/historial\//);
+  check(await page.getByTestId('history-detail').isVisible(), `[${vp}] punt 7: la sessió es desa a l'historial amb les sèries fetes`);
+  await shot(page, `${vp}-28-historial-detall`, { fullPage: vp !== 'escriptori' });
+  await go(page, '/historial');
+  check(/1\s*Sessions aquesta setmana/.test(await page.getByTestId('week-summary').innerText()), `[${vp}] punt 7: el resum setmanal compta la sessió`);
+  await shot(page, `${vp}-29-historial`, { fullPage: true });
+  await go(page, '/');
+  check(await page.getByTestId('home-week').isVisible(), `[${vp}] punt 7: l'Inici mostra el resum de la setmana`);
+  await shot(page, `${vp}-30-inici-setmana`);
   await ctx.close();
 }
 

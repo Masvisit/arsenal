@@ -167,6 +167,7 @@ function scoreCandidate(c, slot, st) {
   // Dins el bloc: no repetir múscul principal ni patró
   if (st.blockTargets && primary.some((t) => st.blockTargets.has(t))) s -= 3;
   if (st.blockPatterns && st.blockPatterns.has(c.req.pattern)) s -= 2;
+  if (st.avoid?.has(c.ex.id)) s -= 5; // regenerar: proposa alternatives
   if (st.goal === 'power' && (slot.kind === 'a' || slot.kind === 'b') && (c.ex.category === 'plyometrics' || c.req.ballistic)) s += 3;
   if (st.goal === 'agentRural') {
     if (slot.pos === 'A' && slot.target === 'chest' && c.req.pattern === 'horizontal_push' && implementOf(c) === 'barbell' && !c.ex.agentRural) s += 4;
@@ -331,6 +332,7 @@ function harmonize(entry, others) {
     if (!reasonable) continue;
     entry.sets = entry.sets.map((s) => ({ ...s, loadKg: opt.kg, loadSetup: opt.setup }));
     entry.weight = { ...entry.weight, kg: opt.kg, itemUid: opt.itemUid, itemKind: opt.itemKind };
+    if (entry.load && !entry.load.chips.some((x) => x.kg === opt.kg)) entry.load.chips = [...entry.load.chips, { kg: opt.kg, setup: opt.setup }].sort((a, b) => a.kg - b.kg);
     entry.sameWeightNote = `Mateix pes que l'exercici ${o.pos} per no canviar de pes a mitja ronda.`;
     if (!weightConflict([...others, entry])) return true;
   }
@@ -386,8 +388,9 @@ function makeState(ctx, workout, seedOffset = 0) {
   };
 }
 
-function fillPlan(workout, plan, pool, ctx) {
+function fillPlan(workout, plan, pool, ctx, avoid) {
   const st = makeState(ctx, workout);
+  st.avoid = avoid || null;
   const used = new Set(plan.filter((p) => p.entry).map((p) => p.entry.exerciseId));
   for (const p of plan) if (p.entry) st.patterns.add(p.entry.pattern);
   const out = [];
@@ -501,7 +504,8 @@ export function regenerateWorkout(workout, ctx, seed = newSeed()) {
     return prev ? { slot: prev.slot, entry: prev } : { slot };
   });
   const next = { ...workout, seed, blocks, exercises: [] };
-  fillPlan(next, plan, pool, { ...ctx, profile });
+  const avoid = new Set(workout.exercises.filter((e) => !e.locked).map((e) => e.exerciseId));
+  fillPlan(next, plan, pool, { ...ctx, profile }, avoid);
   return finalize(next, { ...ctx, profile });
 }
 

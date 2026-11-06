@@ -6,6 +6,9 @@ import { useProfileStore } from '../store/profileStore.js';
 import { useInventoryStore } from '../store/inventoryStore.js';
 import { useStartToday } from './Create.jsx';
 import { LEVEL_LABELS } from '../core/prescription.js';
+import { useHistoryStore } from '../store/historyStore.js';
+import { useLiveStore } from '../store/liveStore.js';
+import { weekSummary } from '../core/history.js';
 
 const fmtDate = (ms) => new Date(ms).toLocaleDateString('ca-ES', { weekday: 'short', day: 'numeric', month: 'short' });
 
@@ -17,6 +20,10 @@ export default function Home() {
   const locations = useInventoryStore((s) => s.locations);
   const startToday = useStartToday();
   const lastUnsaved = current && !saved.some((w) => w.id === current.id) ? current : null;
+  const logs = useHistoryStore((s) => s.logs);
+  const week = weekSummary(logs);
+  const liveId = useLiveStore((s) => s.workoutId);
+  const liveWorkout = liveId ? saved.find((w) => w.id === liveId) || (current?.id === liveId ? current : null) : null;
 
   return (
     <div>
@@ -33,6 +40,23 @@ export default function Home() {
         {!completed && (
           <p className="text-sm text-ink-soft">La primera vegada et farem unes preguntes (cos, objectiu i nivell). Després només caldrà triar lloc, temps i músculs.</p>
         )}
+
+        {liveWorkout && (
+          <Link to={`/entrenament/${liveWorkout.id}/fer`} className="card flex items-center gap-3 border-accent/60 p-4" data-testid="resume-live">
+            <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-accent text-white"><Icon name="play" /></span>
+            <span className="min-w-0 flex-1">
+              <span className="block font-bold">Continuar la sessió</span>
+              <span className="block truncate text-sm text-ink-soft">{liveWorkout.title}</span>
+            </span>
+            <Icon name="chevronRight" className="text-ink-soft" />
+          </Link>
+        )}
+
+        <Link to="/historial" className="card grid grid-cols-3 divide-x divide-line p-0 text-center" data-testid="home-week">
+          {[['Sessions', week.sessions], ['Minuts', week.minutes], ['Sèries', week.sets]].map(([l, v]) => (
+            <span key={l} className="py-3"><span className="block text-2xl font-extrabold">{v}</span><span className="text-xs text-ink-soft">{l} aquesta setmana</span></span>
+          ))}
+        </Link>
 
         {lastUnsaved && (
           <section>

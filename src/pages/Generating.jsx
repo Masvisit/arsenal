@@ -6,6 +6,7 @@ import { useProfileStore } from '../store/profileStore.js';
 import { useInventoryStore } from '../store/inventoryStore.js';
 import { useWizardStore } from '../store/wizardStore.js';
 import { useWorkoutStore } from '../store/workoutStore.js';
+import { useHistoryStore } from '../store/historyStore.js';
 import { generateWorkout } from '../core/generator.js';
 import { selectionToSlugs } from '../core/muscles.js';
 
@@ -17,7 +18,7 @@ export default function Generating() {
   const profile = useProfileStore((s) => s.profile);
   const wiz = useWizardStore();
   const location = useInventoryStore((s) => s.locations.find((l) => l.id === wiz.locationId));
-  const saved = useWorkoutStore((s) => s.saved);
+  const saved = useHistoryStore((s) => s.logs);
   const setCurrent = useWorkoutStore((s) => s.setCurrent);
   const [msg, setMsg] = useState(0);
   const started = useRef(Date.now());
